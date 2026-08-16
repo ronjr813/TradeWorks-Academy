@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#071729">
-<title>TradeWorks Academy V3</title>
+<title>TradeWorks Academy V4</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -13,123 +13,202 @@
   <button id="menuBtn" class="menu">☰</button>
   <nav id="nav">
     <a href="#home">Home</a>
-    <a href="#dashboard">Dashboard</a>
-    <a href="#academies">Academies</a>
-    <a href="#membership">Membership</a>
+    <a href="#assessment">Find My Trade</a>
+    <a href="#results">My Results</a>
+    <a href="#academies">Try the Trades</a>
+    <a href="#dashboard">Dashboard</a><a href="#membership">Membership</a>
   </nav>
 </header>
 
-<main id="app">
+<main>
 <section id="home" class="hero section">
   <div class="hero-copy">
-    <div class="eyebrow">VERSION 3 • ACTIVE TRAINING PLATFORM</div>
-    <h1>LEARN THE TRADE.<br><span>DO THE WORK.</span></h1>
-    <p>Choose HVAC, Electrical, or Plumbing. Complete lessons, pass knowledge checks, solve service calls, earn TradePoints, and build a training record.</p>
+    <div class="eyebrow">VERSION 4 • CAREER EXPLORATION PLATFORM</div>
+    <h1>FIND A CAREER<br><span>THAT FITS YOU.</span></h1>
+    <p>TradeWorks Academy helps students and adults explore HVAC, Electrical, and Plumbing before committing time or money to a career path.</p>
     <div class="actions">
-      <button class="btn primary" id="startBtn">Start Training</button>
-      <a class="btn secondary" href="#academies">Explore Academies</a>
+      <a class="btn primary" href="#assessment">Take the Free Assessment</a>
+      <a class="btn secondary" href="#academies">Try a Trade First</a>
     </div>
+    <div class="mission-note"><b>TradeWorks does not choose a career for you.</b> It helps you experience the work, compare your interests, and make a more informed decision.</div>
   </div>
   <div class="hero-card">
-    <div class="dash-preview">
-      <div class="preview-top">STUDENT TRAINING RECORD</div>
-      <div class="profile-row"><div class="avatar">ST</div><div><small id="previewLevel">APPRENTICE LEVEL 1</small><h3 id="previewName">Future Trades Professional</h3><p id="previewNext">Choose your first lesson</p></div></div>
-      <div class="mini-stat"><span>TradePoints</span><b id="previewPoints">0</b></div>
-      <div class="mini-stat"><span>Lessons Completed</span><b id="previewLessons">0</b></div>
-      <div class="mini-stat"><span>Challenges Passed</span><b id="previewChallenges">0</b></div>
+    <div class="result-preview">
+      <div class="preview-label">SAMPLE CAREER MATCH</div>
+      <h3>HVAC Service Technician</h3>
+      <div class="score-ring"><b>91%</b><span>Match</span></div>
+      <div class="preview-bars">
+        <div><span>HVAC</span><i style="width:91%"></i><b>91%</b></div>
+        <div><span>Electrical</span><i style="width:82%"></i><b>82%</b></div>
+        <div><span>Plumbing</span><i style="width:68%"></i><b>68%</b></div>
+      </div>
+      <p>Recommended next step: try a simulated no-cooling service call.</p>
     </div>
   </div>
 </section>
 
 <section class="strip">
-  <div><b>3</b><span>Trades at launch</span></div>
-  <div><b>WORKING</b><span>Lessons & quizzes</span></div>
-  <div><b>TRACKED</b><span>Student progress</span></div>
-  <div><b>PREMIUM</b><span>Advanced paths</span></div>
+  <div><b>FREE</b><span>Career assessment</span></div>
+  <div><b>3</b><span>Trade experiences</span></div>
+  <div><b>PERSONAL</b><span>Career-match results</span></div>
+  <div><b>NO PRESSURE</b><span>Explore before deciding</span></div>
 </section>
 
-<section id="dashboard" class="section">
-  <div class="section-head"><div class="eyebrow">YOUR TRAINING</div><h2>Student Dashboard</h2><p>Every completed lesson and service call updates your progress on this device.</p></div>
+<section id="assessment" class="section">
+  <div class="section-head">
+    <div class="eyebrow">FIND MY TRADE</div>
+    <h2>What kind of work fits you?</h2>
+    <p>Answer 18 questions about what you enjoy, how you like to work, and what kind of career environment interests you.</p>
+  </div>
+
+  <div class="assessment-grid">
+    <div class="quiz-card">
+      <div class="quiz-progress"><i id="assessmentProgress"></i></div>
+      <div id="assessmentBox"></div>
+    </div>
+    <aside class="assessment-side">
+      <div class="side-icon">🧭</div>
+      <h3>This is not a pass/fail test.</h3>
+      <p>There are no “right” answers. The goal is to compare your preferences with common characteristics of HVAC, Electrical, and Plumbing work.</p>
+      <div class="side-tags"><span>Hands-on work</span><span>Troubleshooting</span><span>Customer interaction</span><span>Work environment</span><span>Business interest</span></div>
+    </aside>
+  </div>
+</section>
+
+<section id="results" class="section alt">
+  <div class="section-head">
+    <div class="eyebrow">YOUR CAREER MATCH</div>
+    <h2>Your results.</h2>
+    <p>Your latest assessment results will appear here. You can retake the assessment anytime.</p>
+  </div>
+  <div id="resultsPanel" class="results-panel empty">
+    <div class="empty-state">
+      <div>🎯</div><h3>No assessment completed yet</h3><p>Take the free assessment above to see your trade matches.</p><a class="btn primary" href="#assessment">Start Assessment</a>
+    </div>
+  </div>
+</section>
+
+<section id="academies" class="section">
+  <div class="section-head">
+    <div class="eyebrow">EXPERIENCE THE WORK</div>
+    <h2>Try the trade before choosing it.</h2>
+    <p>Career results are only a starting point. The best way to learn whether a trade interests you is to experience how technicians actually think.</p>
+  </div>
+  <div class="academy-grid">
+    <article>
+      <div class="icon">❄️</div><small>HVAC EXPERIENCE</small><h3>No Cooling</h3>
+      <p>Work through a simplified HVAC service call using thermostat, control-voltage, and contactor information.</p>
+      <button class="btn primary experience" data-trade="HVAC">Try HVAC</button>
+    </article>
+    <article>
+      <div class="icon">⚡</div><small>ELECTRICAL EXPERIENCE</small><h3>Dead Circuit</h3>
+      <p>Follow a residential troubleshooting sequence and decide where to test after verifying source voltage.</p>
+      <button class="btn primary experience" data-trade="Electrical">Try Electrical</button>
+    </article>
+    <article>
+      <div class="icon">🔧</div><small>PLUMBING EXPERIENCE</small><h3>Low Pressure</h3>
+      <p>Compare whole-house versus single-fixture symptoms and choose the most useful next inspection.</p>
+      <button class="btn primary experience" data-trade="Plumbing">Try Plumbing</button>
+    </article>
+  </div>
+</section>
+
+<section id="dashboard" class="section alt">
+  <div class="section-head"><div class="eyebrow">MY EXPLORATION RECORD</div><h2>Your dashboard.</h2><p>Keep track of assessment results and trade experiences completed on this device.</p></div>
   <div class="dashboard">
     <aside class="student-panel">
-      <div class="avatar large">ST</div>
-      <span>STUDENT</span>
-      <h3 id="studentName">Future Trades Professional</h3>
-      <p id="studentGoal">Career Explorer</p>
-      <div class="points"><b id="points">0</b><span>TradePoints</span></div>
-      <button class="sidebtn" id="editProfile">Edit Profile</button>
+      <div class="avatar">ST</div><span>EXPLORER</span><h3 id="studentName">Future Trades Professional</h3>
+      <p id="studentGoal">Exploring career options</p>
+      <button class="sidebtn" id="profileBtn">Set Profile</button>
     </aside>
     <div class="dashboard-main">
-      <div class="continue-card">
-        <div><div class="eyebrow">NEXT RECOMMENDED</div><h3 id="nextTitle">Start with HVAC Safety & Tools</h3><p id="nextCopy">Begin a free foundation lesson.</p></div>
-        <button class="btn primary" id="continueBtn">Continue Training</button>
-      </div>
       <div class="stats">
-        <div><b id="completedLessons">0</b><span>Lessons completed</span></div>
-        <div><b id="passedChallenges">0</b><span>Challenges passed</span></div>
-        <div><b id="level">1</b><span>Student level</span></div>
+        <div><b id="assessmentDone">No</b><span>Assessment completed</span></div>
+        <div><b id="experiencesDone">0</b><span>Trade experiences tried</span></div>
+        <div><b id="topMatch">—</b><span>Current top match</span></div>
       </div>
-      <div class="progress-grid">
-        <div><header><b>❄️ HVAC</b><span id="hvacPct">0%</span></header><div class="bar"><i id="hvacBar"></i></div></div>
-        <div><header><b>⚡ Electrical</b><span id="elecPct">0%</span></header><div class="bar"><i id="elecBar"></i></div></div>
-        <div><header><b>🔧 Plumbing</b><span id="plumbPct">0%</span></header><div class="bar"><i id="plumbBar"></i></div></div>
+      <div class="explore-progress">
+        <div><span>HVAC experience</span><b id="hvacDone">Not tried</b></div>
+        <div><span>Electrical experience</span><b id="elecDone">Not tried</b></div>
+        <div><span>Plumbing experience</span><b id="plumbDone">Not tried</b></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="academies" class="section alt">
-  <div class="section-head"><div class="eyebrow">CHOOSE YOUR ACADEMY</div><h2>Three trades. One membership.</h2><p>Free foundation lessons let students experience each field before upgrading to advanced training.</p></div>
-  <div class="academy-grid">
-    <article><div class="icon">❄️</div><small>HVAC ACADEMY</small><h3>HVAC</h3><p>Safety, electrical controls, motors, airflow, refrigeration, diagnostics, and service calls.</p><button class="btn primary open-trade" data-trade="HVAC">Open HVAC</button></article>
-    <article><div class="icon">⚡</div><small>ELECTRICAL ACADEMY</small><h3>Electrical</h3><p>Safety, circuits, devices, wiring, panels, measurements, motors, and troubleshooting.</p><button class="btn primary open-trade" data-trade="Electrical">Open Electrical</button></article>
-    <article><div class="icon">🔧</div><small>PLUMBING ACADEMY</small><h3>Plumbing</h3><p>Tools, water supply, DWV, fixtures, valves, water heaters, pressure, and troubleshooting.</p><button class="btn primary open-trade" data-trade="Plumbing">Open Plumbing</button></article>
-  </div>
-</section>
-
-<section id="membership" class="section">
-  <div class="section-head"><div class="eyebrow">MEMBERSHIP</div><h2>Free discovery. Paid progression.</h2><p>This Version 3 includes a working premium lock/unlock demo. Real payment processing comes when a secure backend is connected.</p></div>
-  <div class="pricing">
-    <article><small>EXPLORER</small><h3>Free</h3><p>Career exploration, first two lessons in each academy, quizzes, and selected service calls.</p><button class="btn secondary">Current Plan</button></article>
-    <article class="featured"><small>STUDENT</small><h3>$19.99<span>/month</span></h3><p>All three academies, advanced lessons, advanced service calls, progress tracking, and completion badges.</p><button class="btn primary" id="upgradeBtn">Unlock Full Academy</button></article>
-    <article><small>SCHOOLS & EMPLOYERS</small><h3>Custom</h3><p>Bulk student access, workforce training, reporting, recruiting, and sponsored seats.</p><button class="btn secondary" id="orgBtn">Request Demo</button></article>
+<section class="section">
+  <div class="section-head"><div class="eyebrow">IF YOU WANT TO GO FURTHER</div><h2>Explore. Decide. Then train.</h2><p>TradeWorks can offer deeper training after someone decides a trade is worth pursuing, but the first purpose is helping them make that decision.</p></div>
+  <div class="next-grid">
+    <article><b>1</b><h3>Explore</h3><p>Take the career assessment and learn what each trade is actually like.</p></article>
+    <article><b>2</b><h3>Experience</h3><p>Try realistic service-call and troubleshooting activities.</p></article>
+    <article><b>3</b><h3>Decide</h3><p>Compare interest, comfort, training routes, and lifestyle fit.</p></article>
+    <article><b>4</b><h3>Train</h3><p>If the trade still interests you, move into deeper learning or a real-world school/apprenticeship path.</p></article>
   </div>
 </section>
 </main>
 
 <div class="modal" id="profileModal">
   <div class="modal-card">
-    <button class="close">×</button><div class="eyebrow">STUDENT PROFILE</div><h2>Set up your training profile</h2>
+    <button class="close">×</button><div class="eyebrow">EXPLORER PROFILE</div><h2>Tell us a little about your goal</h2>
     <label>Name<input id="nameInput" placeholder="Your name"></label>
-    <label>Primary interest<select id="interestInput"><option>Undecided</option><option>HVAC</option><option>Electrical</option><option>Plumbing</option></select></label>
-    <label>Goal<select id="goalInput"><option>Explore a career</option><option>Prepare for trade school</option><option>Prepare for an apprenticeship</option><option>Improve job skills</option></select></label>
-    <button class="btn primary" id="saveProfile">Save & Start Training</button>
+    <label>Current goal<select id="goalInput"><option>Exploring career options</option><option>Considering trade school</option><option>Considering an apprenticeship</option><option>Considering a career change</option><option>Helping someone explore careers</option></select></label>
+    <button class="btn primary" id="saveProfile">Save Profile</button>
   </div>
 </div>
 
-<div class="modal" id="tradeModal">
-  <div class="modal-card wide">
-    <button class="close">×</button><div class="eyebrow" id="tradeEyebrow"></div><h2 id="tradeTitle"></h2><p id="tradeIntro"></p>
-    <div class="lesson-list" id="lessonList"></div>
-  </div>
+<div class="modal" id="experienceModal">
+  <div class="modal-card wide"><button class="close">×</button><div id="experienceView"></div></div>
 </div>
 
-<div class="modal" id="lessonModal">
-  <div class="modal-card lesson-modal">
-    <button class="close">×</button>
-    <div id="lessonView"></div>
-  </div>
-</div>
 
-<div class="modal" id="upgradeModal">
-  <div class="modal-card">
-    <button class="close">×</button><div class="eyebrow">PREMIUM MEMBERSHIP</div><h2>Unlock the Full Academy</h2>
-    <p>Production Version 3 will connect this screen to secure checkout. The button below unlocks premium only as a local demo.</p>
-    <div class="checklist">✓ All advanced lessons<br>✓ All service-call simulations<br>✓ Progress and badges<br>✓ HVAC + Electrical + Plumbing</div>
-    <button class="btn primary" id="demoUnlock">Demo Unlock Premium</button>
+<section id="membership" class="section">
+  <div class="section-head">
+    <div class="eyebrow">TRADEWORKS MEMBERSHIP</div>
+    <h2>Explore for free. Go deeper when you're ready.</h2>
+    <p>The career assessment and basic trade exploration stay free. Membership is for people who want more hands-on career exploration and structured learning before choosing their next step.</p>
   </div>
-</div>
+  <div class="membership-grid">
+    <article class="membership-card">
+      <span class="plan-tag">FREE EXPLORER</span>
+      <h3>$0</h3>
+      <p>Enough to help someone decide whether the skilled trades deserve a closer look.</p>
+      <ul>
+        <li>18-question career assessment</li>
+        <li>HVAC, Electrical, and Plumbing match results</li>
+        <li>Trade overview and career-fit explanations</li>
+        <li>One sample experience in each trade</li>
+      </ul>
+      <a class="btn secondary" href="#assessment">Start Free</a>
+    </article>
+    <article class="membership-card featured">
+      <span class="plan-tag">TRADEWORKS MEMBER</span>
+      <h3>Full Career Exploration</h3>
+      <p>For students and adults who want to go beyond a quiz and experience more of the work.</p>
+      <ul>
+        <li>Everything in Free Explorer</li>
+        <li>Expanded HVAC service-call simulations</li>
+        <li>Electrical troubleshooting experiences</li>
+        <li>Plumbing diagnostic experiences</li>
+        <li>Knowledge checks and TradePoints</li>
+        <li>Progress tracking and recommended next steps</li>
+      </ul>
+      <button class="btn primary" id="membershipPreviewBtn">Preview Membership</button>
+      <small>Real accounts and checkout are not connected yet.</small>
+    </article>
+  </div>
+  <div id="membershipNotice" class="membership-notice" hidden>
+    <strong>Membership preview is ready.</strong>
+    <p>The next production phase is secure student accounts, saved cloud progress, and real payment processing. This prototype does not collect money.</p>
+  </div>
+</section>
 
-<footer><div class="brand"><div class="brandmark">TW</div><div><strong>TRADEWORKS</strong><span>ACADEMY</span></div></div><p>Real Skills. Real Careers. Real Impact.</p><small>V3 prototype: real accounts, payments, production student records, certificates, and institutional reporting require a secure backend.</small></footer>
+<footer>
+  <div class="brand"><div class="brandmark">TW</div><div><strong>TRADEWORKS</strong><span>ACADEMY</span></div></div>
+  <p>Explore the work. Understand your options. Make your own decision.</p>
+  <small>TradeWorks Academy is a career-exploration tool and does not replace accredited trade school, apprenticeship, licensing, or employer training.</small>
+</footer>
+
+
 <script src="app.js"></script>
-</body></html>
+</body>
+</html>
