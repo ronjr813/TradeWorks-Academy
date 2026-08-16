@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#071729" />
+  <title>TradeWorks Academy</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="TradeWorks Academy home">
+      <div class="brand-mark">TW</div>
+      <div>
+        <strong>TRADEWORKS</strong>
+        <span>ACADEMY</span>
+      </div>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+    <nav id="nav">
+      <a href="#career">Career Path</a>
+      <a href="#academies">Academies</a>
+      <a href="#challenge">Try a Challenge</a>
+      <a href="#dashboard">Dashboard</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero section">
+      <div class="hero-copy">
+        <div class="eyebrow">SKILLED TRADES • CAREER EXPLORATION • REAL-WORLD TRAINING</div>
+        <h1>REAL SKILLS.<br>REAL CAREERS.<br><span>REAL IMPACT.</span></h1>
+        <p>
+          Explore HVAC, Electrical, and Plumbing through short lessons, realistic service calls,
+          and hands-on decision making. Discover whether college, trade school, an apprenticeship,
+          or another path fits the future you want.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#career">Find My Career Path</a>
+          <a class="btn secondary" href="#challenge">Try a Free Challenge</a>
+        </div>
+        <div class="trust-row">
+          <span>✓ Beginner friendly</span>
+          <span>✓ Mobile first</span>
+          <span>✓ Built around real jobs</span>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="screen">
+          <div class="screen-top">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <b>HVAC SERVICE CALL #01</b>
+          </div>
+          <div class="equipment">
+            <div class="condenser">
+              <div class="fan"></div>
+              <div class="coil"></div>
+            </div>
+            <div class="meter">
+              <div class="meter-display">24.2 V</div>
+              <div class="dial"></div>
+            </div>
+          </div>
+          <div class="scenario">
+            <strong>Customer complaint:</strong>
+            <p>Thermostat is calling for cooling, but the outdoor unit will not start.</p>
+            <div class="mini-choice">What would you test first?</div>
+          </div>
+        </div>
+        <div class="floating-badge">+100 TradePoints</div>
+      </div>
+    </section>
+
+    <section class="mission-strip">
+      <div><strong>3</strong><span>Core Academies</span></div>
+      <div><strong>1</strong><span>Career Path Finder</span></div>
+      <div><strong>∞</strong><span>Future Trades</span></div>
+    </section>
+
+    <section id="career" class="section">
+      <div class="section-heading">
+        <div class="eyebrow">START WITH THE BIG QUESTION</div>
+        <h2>Which path fits you?</h2>
+        <p>Answer a few questions and get a starting recommendation. This is guidance, not a limitation—you can explore everything.</p>
+      </div>
+
+      <div class="career-grid">
+        <div class="quiz-card">
+          <div class="progress"><div id="quizProgress"></div></div>
+          <div id="quizBox"></div>
+        </div>
+        <div class="result-card" id="careerResult">
+          <div class="result-icon">🧭</div>
+          <h3>Your path will appear here</h3>
+          <p>We'll compare hands-on work, problem solving, schooling preferences, entrepreneurship, and work environment.</p>
+          <div class="path-tags">
+            <span>College</span><span>Trade School</span><span>Apprenticeship</span><span>Community College</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="academies" class="section alt">
+      <div class="section-heading">
+        <div class="eyebrow">CHOOSE A TRAINING ACADEMY</div>
+        <h2>Learn by doing.</h2>
+        <p>Each academy begins with fundamentals, then moves into realistic troubleshooting and service work.</p>
+      </div>
+
+      <div class="academy-grid">
+        <article class="academy-card hvac">
+          <div class="academy-icon">❄️</div>
+          <span class="level">ACADEMY 01</span>
+          <h3>HVAC</h3>
+          <p>Heating, air conditioning, controls, meters, refrigeration basics, airflow, and troubleshooting.</p>
+          <div class="modules">
+            <span>Safety & Tools</span><span>Basic Electricity</span><span>Controls</span><span>Service Calls</span>
+          </div>
+          <button class="btn primary academy-open" data-trade="HVAC">Open HVAC Academy</button>
+        </article>
+
+        <article class="academy-card electrical">
+          <div class="academy-icon">⚡</div>
+          <span class="level">ACADEMY 02</span>
+          <h3>Electrical</h3>
+          <p>Safety, circuits, residential wiring, panels, motors, controls, measurements, and fault finding.</p>
+          <div class="modules">
+            <span>Electrical Safety</span><span>Circuits</span><span>Wiring</span><span>Troubleshooting</span>
+          </div>
+          <button class="btn primary academy-open" data-trade="Electrical">Open Electrical Academy</button>
+        </article>
+
+        <article class="academy-card plumbing">
+          <div class="academy-icon">🔧</div>
+          <span class="level">ACADEMY 03</span>
+          <h3>Plumbing</h3>
+          <p>Water systems, DWV, fixtures, valves, water heaters, pumps, diagnostics, and repair decisions.</p>
+          <div class="modules">
+            <span>Safety & Tools</span><span>Supply</span><span>DWV</span><span>Service Calls</span>
+          </div>
+          <button class="btn primary academy-open" data-trade="Plumbing">Open Plumbing Academy</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="challenge" class="section">
+      <div class="section-heading">
+        <div class="eyebrow">INTERACTIVE TRAINING</div>
+        <h2>Try your first service call.</h2>
+        <p>Make a diagnosis from the information provided. The finished platform can later expand into meters, wiring diagrams, gauges, and equipment simulations.</p>
+      </div>
+
+      <div class="challenge-shell">
+        <div class="job-ticket">
+          <div class="ticket-head">
+            <div>
+              <span class="job-label">FREE HVAC CHALLENGE</span>
+              <h3>No Cooling — Outdoor Unit Not Running</h3>
+            </div>
+            <div class="ticket-score">100 pts</div>
+          </div>
+          <div class="job-facts">
+            <div><span>Thermostat</span><strong>Calling for COOL</strong></div>
+            <div><span>Indoor blower</span><strong>Running</strong></div>
+            <div><span>Contactor coil</span><strong>24.2 VAC</strong></div>
+            <div><span>Line voltage</span><strong>Present</strong></div>
+          </div>
+          <div class="question">
+            <h4>What is the best next step?</h4>
+            <div class="choices" id="challengeChoices">
+              <button data-correct="false">Replace the thermostat immediately</button>
+              <button data-correct="true">Check whether the contactor is pulling in and inspect its contacts</button>
+              <button data-correct="false">Add refrigerant to the system</button>
+              <button data-correct="false">Replace the indoor blower motor</button>
+            </div>
+            <div id="challengeFeedback" class="feedback"></div>
+          </div>
+        </div>
+
+        <aside class="why-card">
+          <span>WHY THIS MATTERS</span>
+          <h3>Teach the thought process.</h3>
+          <p>A technician doesn't win by memorizing answers. The student learns what each measurement proves and what it does not prove.</p>
+          <ul>
+            <li>Interpret symptoms</li>
+            <li>Choose a test</li>
+            <li>Read a measurement</li>
+            <li>Rule out possibilities</li>
+            <li>Make a safe diagnosis</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="dashboard" class="section alt">
+      <div class="section-heading">
+        <div class="eyebrow">STUDENT EXPERIENCE</div>
+        <h2>Your training dashboard.</h2>
+        <p>This prototype stores progress on the device so you can see how the student experience could work before we add real accounts.</p>
+      </div>
+
+      <div class="dashboard">
+        <div class="profile-panel">
+          <div class="avatar">ST</div>
+          <div>
+            <span>STUDENT</span>
+            <h3>Future Trades Professional</h3>
+            <p>Apprentice Level</p>
+          </div>
+          <div class="points"><strong id="pointsValue">0</strong><span>TradePoints</span></div>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="progress-card">
+            <div class="trade-title"><span>❄️ HVAC</span><strong id="hvacPct">20%</strong></div>
+            <div class="bar"><div style="width:20%"></div></div>
+            <p>1 of 5 starter modules explored</p>
+          </div>
+          <div class="progress-card">
+            <div class="trade-title"><span>⚡ Electrical</span><strong>0%</strong></div>
+            <div class="bar"><div style="width:0%"></div></div>
+            <p>Ready to begin</p>
+          </div>
+          <div class="progress-card">
+            <div class="trade-title"><span>🔧 Plumbing</span><strong>0%</strong></div>
+            <div class="bar"><div style="width:0%"></div></div>
+            <p>Ready to begin</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="future section">
+      <div>
+        <div class="eyebrow">BUILT TO GROW</div>
+        <h2>One academy. Many futures.</h2>
+        <p>After the first three academies are working, TradeWorks can expand into welding, automotive, diesel, construction, industrial maintenance, appliance repair, and more.</p>
+      </div>
+      <div class="future-tags">
+        <span>Welding</span><span>Automotive</span><span>Diesel</span><span>Construction</span><span>Industrial</span><span>Appliance Repair</span>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="academyModal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose">×</button>
+      <span class="job-label" id="modalLabel">ACADEMY</span>
+      <h2 id="modalTitle">Trade Academy</h2>
+      <p id="modalIntro"></p>
+      <div id="lessonList" class="lesson-list"></div>
+      <button class="btn secondary" id="modalDone">Back to Academies</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="brand">
+      <div class="brand-mark">TW</div>
+      <div><strong>TRADEWORKS</strong><span>ACADEMY</span></div>
+    </div>
+    <p>Real Skills. Real Careers. Real Impact.</p>
+    <small>Prototype training platform • Certificates shown in future versions should be described accurately as certificates of completion unless separately accredited.</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
