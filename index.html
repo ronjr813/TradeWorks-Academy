@@ -5,7 +5,19 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#071729">
 <title>TradeWorks Academy V4</title>
-<link rel="stylesheet" href="styles.css">
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#071729;color:#eef7ff;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.5}button,input,select{font:inherit}a{color:inherit;text-decoration:none}.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:14px clamp(18px,5vw,70px);background:#071729ef;border-bottom:1px solid #ffffff12;backdrop-filter:blur(14px)}.brand{display:flex;align-items:center;gap:10px}.brandmark{width:44px;height:44px;display:grid;place-items:center;border:2px solid #55baff;border-radius:11px;color:#55baff;font-weight:900}.brand strong,.brand span{display:block;line-height:1}.brand span{font-size:.72rem;letter-spacing:.22em;color:#88acc7;margin-top:5px}.topbar nav{display:flex;gap:22px;color:#bdd4e6}.menu{display:none;border:0;background:none;color:white;font-size:1.55rem}.section{padding:86px clamp(20px,6vw,84px)}.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:55px;align-items:center;min-height:78vh;background:radial-gradient(circle at 80% 22%,#299ce533,transparent 31%),linear-gradient(#071729,#0a2037)}.eyebrow,article small{font-size:.72rem;letter-spacing:.16em;font-weight:900;color:#55baff}.hero h1,.section-head h2{font-size:clamp(2.8rem,6vw,6rem);line-height:.9;letter-spacing:-.055em;margin:12px 0 24px}.hero h1 span{color:#54baff}.hero p,.section-head p,article p{color:#9db9cd}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.btn{padding:13px 18px;border-radius:10px;border:1px solid #ffffff1d;font-weight:800;cursor:pointer}.primary{background:#1d98ed;color:white;border-color:#1d98ed}.secondary{background:#0d2b47;color:#ebf7ff}.mission-note{margin-top:24px;background:#0c2d4b;border-left:4px solid #55baff;padding:14px;border-radius:9px;color:#b9cddd}.hero-card{display:flex;justify-content:center}.result-preview{width:min(560px,100%);background:#0b2946;border:1px solid #66bdfa22;border-radius:20px;padding:22px;box-shadow:0 28px 60px #0006}.preview-label{font-size:.72rem;color:#55baff;letter-spacing:.15em}.result-preview h3{font-size:2rem;margin:7px 0}.score-ring{width:120px;height:120px;border-radius:50%;border:10px solid #2c91cd;display:grid;place-items:center;margin:18px auto}.score-ring b,.score-ring span{display:block;text-align:center}.score-ring b{font-size:2rem}.score-ring span{font-size:.72rem;color:#8caac0}.preview-bars{display:grid;gap:10px}.preview-bars div{display:grid;grid-template-columns:80px 1fr 48px;gap:8px;align-items:center}.preview-bars i{height:8px;background:#4ab4f6;border-radius:9px}.preview-bars b{text-align:right}.strip{display:grid;grid-template-columns:repeat(4,1fr);background:#0b2743;border-block:1px solid #ffffff10}.strip div{text-align:center;padding:21px}.strip b,.strip span{display:block}.strip b{font-size:1.3rem;color:#55baff}.strip span{color:#85a4ba}.section-head{max-width:820px;margin-bottom:38px}.section-head h2{font-size:clamp(2.2rem,4.5vw,4.5rem)}.assessment-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}.quiz-card,.assessment-side,.results-panel,.academy-grid article,.student-panel,.stats>div,.explore-progress,.next-grid article{background:#0b2743;border:1px solid #70bef51c;border-radius:16px}.quiz-card,.assessment-side{padding:22px}.quiz-progress{height:7px;background:#153a58;border-radius:10px;overflow:hidden;margin-bottom:20px}.quiz-progress i{display:block;height:100%;width:0;background:#47b1f5}.question-number{font-size:.72rem;color:#55baff;font-weight:900;letter-spacing:.14em}.question h3{font-size:1.5rem}.answer-grid{display:grid;gap:10px}.answer-grid button{background:#102f4d;color:#eaf7ff;border:1px solid #2a5f85;border-radius:10px;padding:13px;text-align:left;cursor:pointer}.answer-grid button:hover{border-color:#55baff}.assessment-side h3{font-size:1.5rem}.assessment-side p{color:#9bb5c8}.side-icon{font-size:2rem}.side-tags{display:flex;flex-wrap:wrap;gap:8px}.side-tags span{background:#103758;border:1px solid #ffffff10;border-radius:999px;padding:7px 10px;font-size:.78rem;color:#b9d0df}.alt{background:#091d32}.results-panel{padding:24px}.results-panel.empty{text-align:center}.empty-state{padding:40px}.empty-state>div{font-size:2.5rem}.result-top{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}.result-top h3{font-size:2.2rem;margin:5px 0}.match-badge{width:110px;height:110px;border-radius:50%;display:grid;place-items:center;border:8px solid #45abed;text-align:center}.match-badge b{font-size:1.8rem;display:block}.match-badge span{font-size:.7rem;color:#88a8bd}.match-bars{display:grid;gap:11px;margin:20px 0}.match-bars div{display:grid;grid-template-columns:95px 1fr 55px;gap:9px;align-items:center}.match-bars i{height:9px;border-radius:9px;background:#47b1f5}.why-box,.next-step-box{background:#091f36;border-radius:11px;padding:16px;margin-top:13px}.why-box p,.next-step-box p{color:#a9c0d0}.result-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.academy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.academy-grid article{padding:22px}.icon{font-size:2rem}.academy-grid h3{font-size:2rem;margin:6px 0}.dashboard{display:grid;grid-template-columns:270px 1fr;gap:16px}.student-panel{padding:20px;text-align:center}.avatar{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;background:#176494;font-weight:900;margin:auto}.student-panel>span{color:#55baff;font-size:.7rem;letter-spacing:.14em}.student-panel p{color:#86a4ba}.sidebtn{width:100%;padding:10px;border-radius:9px;background:#123b5c;border:1px solid #275f86;color:#eaf7ff}.dashboard-main{display:grid;gap:13px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stats>div{padding:17px}.stats b,.stats span{display:block}.stats b{font-size:1.35rem;color:#55baff}.stats span{color:#82a1b7}.explore-progress{padding:18px;display:grid;gap:12px}.explore-progress div{display:flex;justify-content:space-between;border-bottom:1px solid #ffffff0d;padding-bottom:10px}.next-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.next-grid article{padding:20px}.next-grid article>b{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#176494}.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:18px;background:#020913dc;z-index:70}.modal.open{display:flex}.modal-card{position:relative;width:min(580px,100%);max-height:92vh;overflow:auto;background:#0b2844;border:1px solid #2c6288;border-radius:18px;padding:27px}.modal-card.wide{width:min(800px,100%)}.close{position:absolute;right:13px;top:8px;border:0;background:none;color:white;font-size:2rem}.modal label{display:block;color:#9eb6c8;margin:12px 0}.modal input,.modal select{width:100%;margin-top:5px;padding:12px;border-radius:9px;border:1px solid #2c5d7e;background:#081d32;color:white}.experience-body{background:#091f36;border-radius:12px;padding:17px;color:#c2d5e3}.experience-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}.experience-facts div{background:#0e3455;border-radius:9px;padding:10px}.experience-choices{display:grid;gap:9px}.experience-choices button{padding:12px;border-radius:9px;background:#102f4d;border:1px solid #285d82;color:#e8f6ff;text-align:left}.experience-choices button.correct{background:#16472f;border-color:#42c87d}.experience-choices button.wrong{background:#4b2229;border-color:#d0616c}.experience-result{margin-top:13px;padding:12px;background:#0a2139;border-radius:9px}.reflect-box{margin-top:18px;background:#103758;border-radius:10px;padding:15px}.reflect-buttons{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.reflect-buttons button{padding:8px 10px;border-radius:999px;background:#0b2844;border:1px solid #3d7398;color:#e8f5ff}footer{padding:40px clamp(20px,6vw,84px);background:#05111f;color:#7695ad;border-top:1px solid #ffffff10;display:grid;gap:12px}@media(max-width:920px){.hero,.assessment-grid,.dashboard{grid-template-columns:1fr}.academy-grid,.next-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.topbar nav{display:none;position:absolute;top:72px;left:0;right:0;background:#071729;padding:18px;flex-direction:column}.topbar nav.open{display:flex}.menu{display:block}.strip{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.section{padding:62px 18px}.hero h1{font-size:3rem}.actions>*{width:100%;text-align:center}.strip{grid-template-columns:1fr}.result-top{grid-template-columns:1fr}.match-badge{margin:auto}.experience-facts{grid-template-columns:1fr}.match-bars div{grid-template-columns:80px 1fr 45px}}
+.membership-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:24px}
+.membership-card{background:#102a47;border:1px solid #31587b;border-radius:24px;padding:26px}
+.membership-card.featured{border:2px solid #59b9ff;box-shadow:0 0 0 1px rgba(89,185,255,.12)}
+.membership-card h3{font-size:1.8rem;margin:12px 0}
+.membership-card ul{padding-left:22px;line-height:1.8;margin:20px 0}
+.plan-tag{font-weight:800;letter-spacing:.12em;color:#69bdff;font-size:.82rem}
+.membership-card small{display:block;margin-top:14px;opacity:.75}
+.membership-notice{margin-top:20px;padding:20px;border-radius:18px;background:#173c60;border:1px solid #59b9ff}
+@media(max-width:720px){.membership-grid{grid-template-columns:1fr}}
+
+</style>
 </head>
 <body>
 <header class="topbar">
@@ -209,6 +221,104 @@
 </footer>
 
 
-<script src="app.js"></script>
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const questions=[
+{q:'Which type of task sounds most interesting?',a:[['Diagnosing why heating or cooling equipment is not working',{HVAC:3,Electrical:1}],['Tracing a wiring or circuit problem',{Electrical:3,HVAC:1}],['Finding the cause of a leak, pressure, or drain problem',{Plumbing:3}],['I am not sure yet',{HVAC:1,Electrical:1,Plumbing:1}]]},
+{q:'How do you feel about troubleshooting problems that may have several possible causes?',a:[['I enjoy narrowing down possibilities step by step',{HVAC:3,Electrical:3,Plumbing:2}],['I like it if I can use measurements or tools',{HVAC:3,Electrical:3,Plumbing:2}],['I prefer straightforward repair tasks',{Plumbing:2,HVAC:1}],['I do not know yet',{HVAC:1,Electrical:1,Plumbing:1}]]},
+{q:'Which work environment sounds most appealing?',a:[['Different homes and businesses every day',{HVAC:3,Plumbing:3,Electrical:2}],['Construction sites and new installations',{Electrical:3,Plumbing:3,HVAC:2}],['Mechanical rooms, equipment, and controls',{HVAC:3,Electrical:2}],['No preference',{HVAC:1,Electrical:1,Plumbing:1}]]},
+{q:'How interested are you in electricity and electrical measurements?',a:[['Very interested',{Electrical:4,HVAC:3}],['Somewhat interested',{Electrical:2,HVAC:2,Plumbing:1}],['Not very interested',{Plumbing:3}],['I have not tried it',{HVAC:1,Electrical:1,Plumbing:1}]]},
+{q:'How interested are you in mechanical equipment, motors, fans, compressors, and controls?',a:[['Very interested',{HVAC:4,Electrical:1}],['Somewhat interested',{HVAC:2,Electrical:1,Plumbing:1}],['Not very interested',{Plumbing:2,Electrical:1}],['I have not tried it',{HVAC:1,Electrical:1,Plumbing:1}]]},
+{q:'How interested are you in water systems, piping, fixtures, drains, and pressure problems?',a:[['Very interested',{Plumbing:4}],['Somewhat interested',{Plumbing:2,HVAC:1}],['Not very interested',{HVAC:2,Electrical:2}],['I have not tried it',{HVAC:1,Electrical:1,Plumbing:1}]]},
+{q:'How do you feel about working directly with customers?',a:[['I enjoy explaining problems and solutions',{HVAC:3,Plumbing:3,Electrical:2}],['I can do it when needed',{HVAC:2,Plumbing:2,Electrical:2}],['I would rather focus mostly on the technical work',{Electrical:3,HVAC:1}],['Not sure',{HVAC:1,Electrical:1,Plumbing:1}]]},
+{q:'Would you be comfortable sometimes working outdoors in hot or cold weather?',a:[['Yes',{HVAC:3,Plumbing:2,Electrical:2}],['Sometimes',{HVAC:2,Plumbing:2,Electrical:2}],['I would strongly prefer indoor work',{Electrical:2,Plumbing:1}],['Not sure',{HVAC:1,Electrical:1,Plumbing:1}]]},
+{q:'Would ladders, attics, crawlspaces, or tight work areas bother you?',a:[['I can handle them',{HVAC:3,Electrical:3,Plumbing:3}],['Some are okay',{HVAC:2,Electrical:2,Plumbing:2}],['I would rather avoid them',{Electrical:1,Plumbing:1,HVAC:1}],['I have not experienced that kind of work',{HVAC:1,Electrical:1,Plumbing:1}]]},
+{q:'How do you feel about math and measurements?',a:[['I like them',{Electrical:3,HVAC:3,Plumbing:2}],['I am okay with practical math',{HVAC:2,Electrical:2,Plumbing:2}],['I prefer less math-heavy work',{Plumbing:2}],['I am willing to improve',{HVAC:2,Electrical:2,Plumbing:2}]]},
+{q:'Which sounds more satisfying?',a:[['Getting a machine or system running again',{HVAC:4}],['Making a circuit operate correctly and safely',{Electrical:4}],['Restoring water flow or drainage',{Plumbing:4}],['All of those sound satisfying',{HVAC:2,Electrical:2,Plumbing:2}]]},
+{q:'Would you enjoy reading diagrams, wiring schematics, or technical drawings?',a:[['Yes',{Electrical:3,HVAC:3,Plumbing:1}],['Maybe after learning how',{Electrical:2,HVAC:2,Plumbing:2}],['Not much',{Plumbing:2}],['Not sure',{HVAC:1,Electrical:1,Plumbing:1}]]},
+{q:'How important is variety in your workday?',a:[['Very important',{HVAC:3,Plumbing:3,Electrical:2}],['Somewhat important',{HVAC:2,Electrical:2,Plumbing:2}],['I like predictable work',{Electrical:2,Plumbing:2}],['No preference',{HVAC:1,Electrical:1,Plumbing:1}]]},
+{q:'Would owning a service business someday interest you?',a:[['Yes',{HVAC:3,Plumbing:3,Electrical:3}],['Maybe',{HVAC:2,Plumbing:2,Electrical:2}],['Probably not',{HVAC:1,Electrical:1,Plumbing:1}],['I have never considered it',{HVAC:1,Electrical:1,Plumbing:1}]]},
+{q:'Which learning style fits you best?',a:[['Show me, then let me try it',{HVAC:3,Electrical:3,Plumbing:3}],['I learn best from diagrams and explanations',{Electrical:3,HVAC:2,Plumbing:1}],['I learn by physically building or repairing',{Plumbing:3,HVAC:2,Electrical:2}],['A mix of all three',{HVAC:2,Electrical:2,Plumbing:2}]]},
+{q:'How do you feel about emergency or after-hours service work?',a:[['I could handle some on-call work',{HVAC:3,Plumbing:3,Electrical:2}],['Only occasionally',{HVAC:2,Plumbing:2,Electrical:2}],['I strongly prefer a regular schedule',{Electrical:2}],['Not sure',{HVAC:1,Electrical:1,Plumbing:1}]]},
+{q:'What matters most to you when choosing a career?',a:[['Solving technical problems',{HVAC:3,Electrical:3,Plumbing:2}],['Building and installing things',{Electrical:3,Plumbing:3,HVAC:2}],['Helping customers fix urgent problems',{HVAC:3,Plumbing:3,Electrical:2}],['I am still figuring that out',{HVAC:1,Electrical:1,Plumbing:1}]]},
+{q:'Right now, how certain are you that you want a skilled-trade career?',a:[['Very interested',{HVAC:2,Electrical:2,Plumbing:2}],['Interested but still comparing options',{HVAC:2,Electrical:2,Plumbing:2}],['Mostly exploring',{HVAC:1,Electrical:1,Plumbing:1}],['Not sure trades are for me',{HVAC:1,Electrical:1,Plumbing:1}]]}
+];
+const experiences={
+HVAC:{title:'HVAC: No-Cooling Service Call',intro:'The indoor blower is running, but the outdoor unit is not.',facts:['Thermostat: Calling for cool','Contactor coil: 24.4 VAC','Line voltage: Present'],q:'What is the best next step?',opts:['Add refrigerant','Verify the contactor pulls in and passes power','Replace the thermostat','Replace the indoor blower motor'],a:1,explain:'Control voltage is reaching the contactor. The next useful check is whether the contactor is mechanically operating and passing power.'},
+Electrical:{title:'Electrical: Dead Circuit',intro:'Several receptacles on one branch circuit are dead, but the breaker appears on.',facts:['Breaker: On','Voltage at breaker: Present','Downstream receptacles: Dead'],q:'What is a useful next step?',opts:['Increase the breaker size','Check the next accessible upstream device/GFCI/connection','Replace every receptacle','Ignore the neutral'],a:1,explain:'After verifying source voltage, troubleshoot along the affected circuit from known-good toward the failed load.'},
+Plumbing:{title:'Plumbing: Low Pressure',intro:'The customer reports low water pressure throughout the entire house.',facts:['All fixtures: Low pressure','Main supply: On','One faucet aerator: Clean'],q:'What should you inspect early?',opts:['Only one sink trap','Main shutoff, regulator, filter, or supply condition','One toilet flapper','The roof vent'],a:1,explain:'A whole-house symptom points toward a shared upstream component rather than one individual fixture.'}
+};
+let idx=0,scores={HVAC:0,Electrical:0,Plumbing:0};
+let state={name:localStorage.tw4_name||'Future Trades Professional',goal:localStorage.tw4_goal||'Exploring career options'};
+function save(){localStorage.tw4_name=state.name;localStorage.tw4_goal=state.goal}
+function open(id){$(id).classList.add('open')} function close(){ $$('.modal').forEach(m=>m.classList.remove('open')) }
+$$('.close').forEach(b=>b.onclick=close); $$('.modal').forEach(m=>m.onclick=e=>{if(e.target===m)close()});
+$('#menuBtn').onclick=()=>$('#nav').classList.toggle('open');$$('#nav a').forEach(a=>a.onclick=()=>$('#nav').classList.remove('open'));
+function renderQ(){let item=questions[idx];$('#assessmentProgress').style.width=(idx/questions.length*100)+'%';$('#assessmentBox').innerHTML=`<div class="question"><div class="question-number">QUESTION ${idx+1} OF ${questions.length}</div><h3>${item.q}</h3><div class="answer-grid">${item.a.map((x,i)=>`<button data-i="${i}">${x[0]}</button>`).join('')}</div></div>`;$$('#assessmentBox button').forEach(b=>b.onclick=()=>answer(+b.dataset.i))}
+function answer(i){let weights=questions[idx].a[i][1];Object.entries(weights).forEach(([k,v])=>scores[k]+=v);idx++;if(idx<questions.length)renderQ();else finish()}
+function finish(){
+ $('#assessmentProgress').style.width='100%';
+ $('#assessmentBox').innerHTML='<div class="question"><div class="question-number">ASSESSMENT COMPLETE</div><h3>Your career matches are ready.</h3><button class="btn secondary" id="retake">Retake Assessment</button></div>';
+ let maxPossible=questions.length*4;
+ let pct={};Object.keys(scores).forEach(k=>pct[k]=Math.max(1,Math.min(99,Math.round(scores[k]/maxPossible*100+28))));
+ let order=Object.entries(pct).sort((a,b)=>b[1]-a[1]), top=order[0][0];
+ localStorage.tw4_results=JSON.stringify(pct);localStorage.tw4_top=top;
+ showResults(pct);
+ $('#retake').onclick=()=>{idx=0;scores={HVAC:0,Electrical:0,Plumbing:0};renderQ()};
+ location.hash='#results'; updateDashboard();
+}
+function showResults(pct){
+ let order=Object.entries(pct).sort((a,b)=>b[1]-a[1]), top=order[0][0];
+ const copy={
+ HVAC:'Your answers suggest you may enjoy mechanical/electrical troubleshooting, varied service work, practical measurements, and solving comfort-system problems.',
+ Electrical:'Your answers suggest you may enjoy circuits, precise measurements, diagrams, installation work, and methodical troubleshooting.',
+ Plumbing:'Your answers suggest you may enjoy hands-on repair, piping and fixture systems, practical problem solving, and restoring water flow or drainage.'
+ };
+ $('#resultsPanel').classList.remove('empty');
+ $('#resultsPanel').innerHTML=`<div class="result-top"><div><div class="eyebrow">TOP CURRENT MATCH</div><h3>${top}</h3><p>This does not mean you should choose ${top}. It means your answers currently align most closely with common parts of that work.</p></div><div class="match-badge"><div><b>${pct[top]}%</b><span>Match</span></div></div></div>
+ <div class="match-bars">${order.map(([t,v])=>`<div><span>${t}</span><i style="width:${v}%"></i><b>${v}%</b></div>`).join('')}</div>
+ <div class="why-box"><b>Why ${top} ranked highest</b><p>${copy[top]}</p></div>
+ <div class="next-step-box"><b>Recommended next step</b><p>Try the free ${top} work experience below. Afterward, ask yourself whether the problem-solving process felt interesting enough to explore further.</p></div>
+ <div class="result-actions"><button class="btn primary" id="tryTop">Try ${top}</button><button class="btn secondary" id="retake2">Retake Assessment</button></div>`;
+ $('#tryTop').onclick=()=>showExperience(top);$('#retake2').onclick=()=>{idx=0;scores={HVAC:0,Electrical:0,Plumbing:0};location.hash='#assessment';renderQ()}
+}
+renderQ();
+if(localStorage.tw4_results){try{showResults(JSON.parse(localStorage.tw4_results))}catch(e){}}
+function showExperience(trade){
+ let e=experiences[trade];
+ $('#experienceView').innerHTML=`<div class="eyebrow">${trade.toUpperCase()} CAREER EXPERIENCE</div><h2>${e.title}</h2><div class="experience-body"><p>${e.intro}</p><div class="experience-facts">${e.facts.map(f=>`<div>${f}</div>`).join('')}</div></div><h3>${e.q}</h3><div class="experience-choices">${e.opts.map((o,i)=>`<button data-i="${i}">${o}</button>`).join('')}</div><div id="experienceResult"></div>`;
+ $$('#experienceView .experience-choices button').forEach(b=>b.onclick=()=>gradeExperience(trade,e,+b.dataset.i));
+ open('#experienceModal');
+}
+$$('.experience').forEach(b=>b.onclick=()=>showExperience(b.dataset.trade));
+function gradeExperience(trade,e,choice){
+ let bs=$$('#experienceView .experience-choices button');bs.forEach(b=>b.disabled=true);bs[e.a].classList.add('correct');
+ if(choice!==e.a)bs[choice].classList.add('wrong');
+ if(choice===e.a)localStorage['tw4_exp_'+trade]='1';
+ $('#experienceResult').innerHTML=`<div class="experience-result"><b>${choice===e.a?'Correct.':'Review the correct choice.'}</b> ${e.explain}</div><div class="reflect-box"><b>Career reflection</b><p>How did this type of problem-solving feel?</p><div class="reflect-buttons"><button>Interesting</button><button>I could learn this</button><button>Not sure</button><button>Not for me</button></div></div>`;
+ $$('#experienceResult .reflect-buttons button').forEach(b=>b.onclick=()=>{localStorage['tw4_reflect_'+trade]=b.textContent;updateDashboard();b.textContent='Saved ✓'});
+ updateDashboard();
+}
+function updateDashboard(){
+ $('#studentName').textContent=state.name;$('#studentGoal').textContent=state.goal;
+ let done=['HVAC','Electrical','Plumbing'].filter(t=>localStorage['tw4_exp_'+t]).length;
+ $('#experiencesDone').textContent=done;$('#assessmentDone').textContent=localStorage.tw4_results?'Yes':'No';$('#topMatch').textContent=localStorage.tw4_top||'—';
+ [['HVAC','hvacDone'],['Electrical','elecDone'],['Plumbing','plumbDone']].forEach(([t,id])=>$('#'+id).textContent=localStorage['tw4_exp_'+t]?'Tried ✓':'Not tried');
+}
+updateDashboard();
+$('#profileBtn').onclick=()=>{$('#nameInput').value=state.name==='Future Trades Professional'?'':state.name;$('#goalInput').value=state.goal;open('#profileModal')};
+$('#saveProfile').onclick=()=>{let n=$('#nameInput').value.trim();if(n)state.name=n;state.goal=$('#goalInput').value;save();updateDashboard();close()};
+const membershipPreviewBtn = document.getElementById('membershipPreviewBtn');
+if (membershipPreviewBtn) {
+  membershipPreviewBtn.addEventListener('click', () => {
+    const box = document.getElementById('membershipNotice');
+    if (box) {
+      box.hidden = false;
+      box.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+  });
+}
+
+</script>
 </body>
 </html>
