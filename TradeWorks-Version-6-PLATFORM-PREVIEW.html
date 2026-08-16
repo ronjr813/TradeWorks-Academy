@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TradeWorks Academy Version 6</title>
+<style>
+:root{--bg:#061522;--panel:#0d2942;--panel2:#102f4d;--line:#315a7a;--text:#eef6fd;--muted:#b7c6d4;--blue:#5ba8e6;--gold:#f1c45f;--green:#59cf8a}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.5}
+header{position:sticky;top:0;z-index:5;background:#061522f2;border-bottom:1px solid #17354e}.nav{max-width:980px;margin:auto;padding:13px 18px;display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;gap:10px;align-items:center}.logo{width:46px;height:46px;border:3px solid var(--blue);border-radius:14px;display:grid;place-items:center;font-weight:900;color:#9ad2ff}
+.brand b{display:block}.brand small{color:#8da6bc;letter-spacing:2px}.wrap{max-width:980px;margin:auto;padding:0 18px 70px}
+.hero{padding:62px 0 34px}.kicker{color:#8ecbfa;font-weight:900;letter-spacing:4px;text-transform:uppercase;font-size:13px}
+h1{font-size:clamp(46px,9vw,78px);line-height:.98;margin:15px 0 22px;letter-spacing:-2px}h1 span{color:var(--blue)}h2{font-size:clamp(30px,5vw,46px);margin:0 0 12px}
+.lead{font-size:clamp(20px,3vw,27px);color:var(--muted)}.btn,button{border:0;border-radius:14px;padding:14px 17px;font-weight:900;background:var(--blue);color:white;cursor:pointer}
+.secondary{background:#17334d;border:1px solid var(--line)}.gold{background:var(--gold);color:#302508}.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.card{background:linear-gradient(#0f2c46,#0a2135);border:1px solid var(--line);border-radius:20px;padding:21px;margin:18px 0}.section{padding:27px 0}.sectiontag{color:#8ecbfa;font-size:13px;letter-spacing:4px;font-weight:900;text-transform:uppercase}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.trade{background:#0d2942;border:1px solid var(--line);border-radius:18px;padding:19px;display:flex;flex-direction:column;min-height:280px}.trade .icon{font-size:38px}.trade h3{font-size:24px;margin:9px 0}.trade p{color:var(--muted);flex:1}.trade button{width:100%}
+.pill{display:inline-block;border-radius:999px;background:#123b5d;color:#9fd4ff;padding:6px 9px;font-size:12px;font-weight:800}.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.step{background:#0a2136;border:1px solid #2b516e;border-radius:15px;padding:16px}.muted{color:var(--muted)}
+.screen{display:none}.screen.active{display:block}.back{margin:20px 0;background:#17334d;border:1px solid var(--line)}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}.tab{background:#17334d;border:1px solid var(--line)}.tab.active{background:var(--blue)}.pane{display:none}.pane.active{display:block}
+.q{background:#081d30;border:1px solid #2b516e;border-radius:16px;padding:17px;margin:12px 0}.answer{display:block;width:100%;text-align:left;background:#12304a;border:1px solid #315a7a;margin:8px 0}.good{background:#163d2b!important;border-color:var(--green)!important}.bad{background:#44252a!important;border-color:#db6e77!important}
+.lock{border:1px solid #8b712b;background:#2d2815;padding:18px;border-radius:16px}.price{font-size:42px;font-weight:950;color:var(--gold)}.progress{height:12px;background:#061522;border:1px solid #315a7a;border-radius:99px;overflow:hidden}.progress span{display:block;height:100%;background:var(--blue)}
+.result{display:grid;grid-template-columns:120px 1fr 45px;gap:9px;align-items:center;margin:10px 0}
+.modal{position:fixed;inset:0;background:#000b;display:none;place-items:center;padding:20px;z-index:20}.modal.show{display:grid}.modalbox{max-width:520px;background:#0d2942;border:1px solid var(--line);border-radius:20px;padding:22px}
+footer{color:#7c93a6;text-align:center;padding:30px 10px}
+@media(max-width:760px){.grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.grid,.steps{grid-template-columns:1fr}}
+</style></head>
+<body>
+<header><div class="nav"><div class="brand"><div class="logo">TW</div><div><b>TRADEWORKS</b><small>ACADEMY</small></div></div><button class="secondary" onclick="home()">Home</button></div></header>
+<main class="wrap">
+<section id="home" class="screen active">
+<div class="hero"><div class="kicker">Version 6 Platform Preview</div><h1>COLLEGE IS A PATH.<br><span>NOT THE ONLY PATH.</span></h1>
+<p class="lead">Explore skilled trades, see what the work is like, test your problem-solving skills, and discover which hands-on career may fit you.</p>
+<div class="row"><button onclick="document.getElementById('trades').scrollIntoView()">Explore Trades</button><button class="secondary" onclick="assessment()">Find My Trade</button><button class="gold" onclick="pass()">Career Pass</button></div></div>
+<div class="card"><div class="sectiontag">Why TradeWorks Exists</div><h2>Career decisions should come with a test drive.</h2>
+<p class="lead" style="font-size:20px">TradeWorks is designed to show students and career changers that college, trade school, apprenticeship and employer training are all possible routes. The goal is not to tell someone which path to choose—it is to let them explore before investing years of time and money.</p>
+<div class="steps"><div class="step"><b>1. Discover</b><p class="muted">Learn what each trade does, how people train, and where the career can lead.</p></div><div class="step"><b>2. Experience</b><p class="muted">Work through simplified job situations and choose what you would do next.</p></div><div class="step"><b>3. Test Yourself</b><p class="muted">Take knowledge checks with explanations, not just right/wrong scores.</p></div><div class="step"><b>4. Find Your Fit</b><p class="muted">Compare your interests with different skilled-trade environments.</p></div></div></div>
+
+<section id="trades" class="section"><div class="sectiontag">Career Explorer</div><h2>Choose a trade</h2><p class="muted">National wage figures shown are BLS May 2024 medians. Actual pay varies by location, experience, overtime, union status, specialty and self-employment.</p><div class="grid"><article class="trade" onclick="openTrade('hvac')">
+    <div class="icon">❄️</div><h3>HVAC</h3><span class="pill">$59,810 U.S. median</span>
+    <p>Heating, cooling, airflow, refrigeration and controls.</p><button>Explore HVAC</button></article>
+<article class="trade" onclick="openTrade('electrical')">
+    <div class="icon">⚡</div><h3>Electrical</h3><span class="pill">$62,350 U.S. median</span>
+    <p>Wiring, circuits, controls, power distribution and troubleshooting.</p><button>Explore Electrical</button></article>
+<article class="trade" onclick="openTrade('plumbing')">
+    <div class="icon">🔧</div><h3>Plumbing</h3><span class="pill">$62,970 U.S. median</span>
+    <p>Water supply, drainage, venting, fixtures, piping and service diagnosis.</p><button>Explore Plumbing</button></article>
+<article class="trade" onclick="openTrade('welding')">
+    <div class="icon">🔥</div><h3>Welding & Fabrication</h3><span class="pill">$51,000 U.S. median</span>
+    <p>Cutting, fitting, joining and building metal components.</p><button>Explore Welding & Fabrication</button></article>
+<article class="trade" onclick="openTrade('auto')">
+    <div class="icon">🚗</div><h3>Automotive & Diesel</h3><span class="pill">Auto $49,670 • Diesel $60,640 U.S. median</span>
+    <p>Mechanical, electrical and computer-based vehicle diagnosis and repair.</p><button>Explore Automotive & Diesel</button></article>
+<article class="trade" onclick="openTrade('carpentry')">
+    <div class="icon">🪚</div><h3>Carpentry & Construction</h3><span class="pill">Carpenters $59,310 U.S. median</span>
+    <p>Layout, framing, interiors, remodeling, structures and jobsite coordination.</p><button>Explore Carpentry & Construction</button></article>
+<article class="trade" onclick="openTrade('heavy')">
+    <div class="icon">🚜</div><h3>Heavy Equipment</h3><span class="pill">Service techs $62,740 U.S. median</span>
+    <p>Operating, maintaining and repairing construction and mobile equipment.</p><button>Explore Heavy Equipment</button></article>
+<article class="trade" onclick="openTrade('renewable')">
+    <div class="icon">☀️</div><h3>Solar & Wind</h3><span class="pill">Solar $51,860 • Wind $62,580 U.S. median</span>
+    <p>Installation and maintenance of solar and wind energy systems.</p><button>Explore Solar & Wind</button></article></div></section>
+
+<section class="section"><div class="sectiontag">Ways to Get Started</div><h2>There is more than one training path</h2>
+<div class="steps"><div class="step"><b>Apprenticeship</b><p class="muted">Technical instruction plus supervised paid work.</p></div><div class="step"><b>Trade / Technical School</b><p class="muted">Focused hands-on training for entry-level skill and certifications.</p></div><div class="step"><b>Employer Training</b><p class="muted">Some employers hire entry-level workers and train them on the job.</p></div><div class="step"><b>Community College</b><p class="muted">Certificates and associate programs can combine technical and general education.</p></div></div></section>
+
+<div class="card"><div class="sectiontag">TradeWorks Career Pass</div><h2>One payment. Full career exploration.</h2><div class="price">$19.95 <small style="font-size:14px;color:#b7c6d4">planned one-time fee</small></div>
+<p class="muted">The finished paid experience can unlock complete simulations, quizzes, saved progress, career matching and future trade modules.</p><div class="lock"><b>Version 6 preview:</b> payment processing is not connected yet. The preview unlock button only demonstrates how the paid area will work.</div><button class="gold" style="width:100%;margin-top:14px" onclick="pass()">Preview Career Pass</button></div>
+</section>
+
+<section id="tradeScreen" class="screen"><button class="back" onclick="home()">← Back to trades</button><div class="kicker" id="tk"></div><h2 id="tt"></h2><p class="lead" id="td" style="font-size:20px"></p><span class="pill" id="tm"></span>
+<div class="tabs"><button class="tab active" onclick="tab('overview',this)">Overview</button><button class="tab" onclick="tab('training',this)">Training</button><button class="tab" onclick="tab('career',this)">Career Growth</button></div>
+<div class="card"><div id="overview" class="pane active"></div><div id="training" class="pane"></div><div id="career" class="pane"></div></div>
+<div class="section"><div class="sectiontag">Free Knowledge Preview</div><h2>Try a few questions</h2><div id="quiz"></div></div>
+<div class="section"><div id="premium"></div></div></section>
+
+<section id="assess" class="screen"><button class="back" onclick="home()">← Back home</button><div class="kicker">Career Match</div><h2>What kind of work sounds like you?</h2><p class="lead" style="font-size:20px">This is an interest explorer, not an aptitude or employment test.</p><div id="aq"></div><button style="width:100%" onclick="score()">See My Matches</button><div id="results"></div></section>
+</main>
+<footer>TradeWorks Academy • Version 6 Platform Preview • Career exploration, not professional certification</footer>
+<div id="modal" class="modal"><div class="modalbox"><div class="sectiontag">Career Pass</div><h2>$19.95 one-time</h2><p>Planned access: full trade simulations, quizzes, progress tracking, career match and future modules.</p><div class="lock"><b>Testing only:</b> No payment is collected in this preview. Secure payment should be added with a provider such as Stripe before customers are charged.</div><button class="gold" style="width:100%;margin-top:14px" onclick="unlock()">Preview Paid Experience</button><button class="secondary" style="width:100%;margin-top:9px" onclick="closePass()">Not now</button></div></div>
+<script>
+const trades={hvac:{icon:"❄️",name:"HVAC",median:"$59,810",desc:"Heating, cooling, airflow, refrigeration and controls.",path:"Technical school, apprenticeship or employer training",careers:"Residential/commercial service, installation, refrigeration, controls, management, ownership"},
+electrical:{icon:"⚡",name:"Electrical",median:"$62,350",desc:"Wiring, circuits, controls, power distribution and troubleshooting.",path:"Apprenticeship is a common route",careers:"Residential, commercial, industrial, controls, foreman, estimator, contractor"},
+plumbing:{icon:"🔧",name:"Plumbing",median:"$62,970",desc:"Water supply, drainage, venting, fixtures, piping and service diagnosis.",path:"Apprenticeship is common",careers:"Service, construction, pipefitting, foreman, estimating, contractor"},
+welding:{icon:"🔥",name:"Welding & Fabrication",median:"$51,000",desc:"Cutting, fitting, joining and building metal components.",path:"Technical and on-the-job training",careers:"Shop fabrication, structural, pipe, field repair, inspection, supervision, ownership"},
+auto:{icon:"🚗",name:"Automotive & Diesel",median:"Auto $49,670 • Diesel $60,640",desc:"Mechanical, electrical and computer-based vehicle diagnosis and repair.",path:"Technical programs or employer training",careers:"Automotive, diesel, fleet, diagnostics, foreman, service management, shop ownership"},
+carpentry:{icon:"🪚",name:"Carpentry & Construction",median:"Carpenters $59,310",desc:"Layout, framing, interiors, remodeling, structures and jobsite coordination.",path:"On-the-job learning or apprenticeship",careers:"Carpenter, finish carpenter, foreman, estimator, superintendent, contractor"},
+heavy:{icon:"🚜",name:"Heavy Equipment",median:"Service techs $62,740",desc:"Operating, maintaining and repairing construction and mobile equipment.",path:"Employer, apprenticeship or technical training",careers:"Operator, field technician, fleet tech, hydraulic specialist, supervisor"},
+renewable:{icon:"☀️",name:"Solar & Wind",median:"Solar $51,860 • Wind $62,580",desc:"Installation and maintenance of solar and wind energy systems.",path:"Technical training plus on-the-job learning",careers:"Installer, service technician, commissioning, crew lead, site supervisor"}};
+const qs=[
+["When diagnosing a problem, what is usually the best mindset?",["Gather information and test logically","Replace the most expensive part first","Ignore safety"],0],
+["Why are measurements useful in skilled trades?",["They help confirm what a system is actually doing","They replace training","They are only for managers"],0],
+["After a repair or installation, a professional should:",["Verify proper operation","Leave without checking","Assume it worked"],0]
+];
+const scenarios={
+hvac:["AC runs but the house is warm","Check basic airflow and operating conditions","Replace the compressor immediately"],
+electrical:["A group of devices is not working","Determine the scope and follow safe diagnostic procedures","Increase the breaker size"],
+plumbing:["One sink drains slowly","Focus first on the local fixture/drain path","Replace the water heater"],
+welding:["A bracket must match a drawing","Measure, prepare and verify fit-up before final welding","Weld first and measure later"],
+auto:["A vehicle will not start","Verify the symptom and basic conditions before replacing parts","Order every possible sensor"],
+carpentry:["You are laying out a wall","Confirm dimensions and reference points first","Start cutting without the plan"],
+heavy:["A machine has slow hydraulic response","Gather the symptom and perform safe basic checks","Increase pressure beyond specifications"],
+renewable:["A solar system is underperforming","Review status data and inspect safely","Replace every panel"]
+};
+let current="", unlocked=localStorage.getItem("twv6pass")==="yes", answers={};
+function home(){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));document.getElementById("home").classList.add("active");scrollTo(0,0)}
+function openTrade(id){current=id;let t=trades[id];document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));document.getElementById("tradeScreen").classList.add("active");tk.textContent=t.name.toUpperCase()+" • CAREER EXPLORER";tt.textContent=t.icon+" "+t.name;td.textContent=t.desc;tm.textContent=t.median+" U.S. median";overview.innerHTML="<h3>What the work is about</h3><p>"+t.desc+"</p><p class='muted'>Most skilled trades combine hands-on ability, problem solving, safety awareness, communication and continued learning. Actual duties vary by employer and specialty.</p>";training.innerHTML="<h3>Common entry path</h3><p>"+t.path+"</p><p class='muted'>Licensing, certifications and legal requirements vary by trade and location.</p>";career.innerHTML="<h3>Where it can lead</h3><p>"+t.careers+"</p><p class='muted'>Advancement depends on experience, skill, qualifications, leadership and local opportunity.</p>";renderQuiz();renderPremium();scrollTo(0,0)}
+function tab(id,b){document.querySelectorAll(".pane").forEach(x=>x.classList.remove("active"));document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");b.classList.add("active")}
+function renderQuiz(){quiz.innerHTML=qs.slice(0,2).map((q,i)=>`<div class="q"><b>${i+1}. ${q[0]}</b>${q[1].map((a,j)=>`<button class="answer" onclick="ans(this,${j},${q[2]})">${a}</button>`).join("")}<div class="muted fb"></div></div>`).join("")}
+function ans(b,j,c){let p=b.parentElement;p.querySelectorAll(".answer").forEach((x,i)=>{x.disabled=true;if(i===c)x.classList.add("good")});if(j!==c)b.classList.add("bad");p.querySelector(".fb").textContent=j===c?"Correct. Skilled work rewards a logical, evidence-based approach.":"Not the best choice. Think safety, basic checks, evidence and verification."}
+function renderPremium(){if(!unlocked){premium.innerHTML=`<div class="card"><div class="sectiontag">Premium Experience</div><h2>Try the work</h2><div class="lock">🔒 Full scenario and extended quiz are part of the Career Pass.</div><button class="gold" style="width:100%;margin-top:12px" onclick="pass()">Unlock Career Pass</button></div>`;return}let s=scenarios[current];premium.innerHTML=`<div class="card"><div class="sectiontag">Interactive Scenario</div><h2>${s[0]}</h2><p>What is the better first approach?</p><button class="answer" onclick="sim(this,true)">${s[1]}</button><button class="answer" onclick="sim(this,false)">${s[2]}</button><div id="sf" class="muted"></div></div><div class="card"><div class="sectiontag">Full Knowledge Check</div>${qs.map((q,i)=>`<div class="q"><b>${i+1}. ${q[0]}</b>${q[1].map((a,j)=>`<button class="answer" onclick="ans(this,${j},${q[2]})">${a}</button>`).join("")}<div class="muted fb"></div></div>`).join("")}</div>`}
+function sim(b,ok){b.classList.add(ok?"good":"bad");document.getElementById("sf").textContent=ok?"Good choice. Start with safe, logical checks before major replacement or disassembly.":"That jumps ahead too quickly. A skilled technician usually narrows the problem before major action."}
+function pass(){modal.classList.add("show")}function closePass(){modal.classList.remove("show")}function unlock(){localStorage.setItem("twv6pass","yes");unlocked=true;closePass();if(current)renderPremium();alert("Career Pass preview unlocked on this device. No payment was taken.")}
+const aqdata=[
+["Which sounds most satisfying?",["Diagnosing why something failed","Building or fabricating something","Installing systems that people rely on"]],
+["What work setting sounds best?",["Homes/businesses solving service calls","Shop/fabrication environment","Construction sites or equipment"]],
+["Which challenge interests you?",["Mechanical/electrical troubleshooting","Precise layout and building","Flow, piping or energy systems"]],
+["Would you like the option to own a service business someday?",["Yes","Maybe","I prefer becoming a specialist"]]
+];
+function assessment(){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));assess.classList.add("active");renderA();scrollTo(0,0)}
+function renderA(){aq.innerHTML=aqdata.map((q,i)=>`<div class="q"><b>${i+1}. ${q[0]}</b>${q[1].map((a,j)=>`<button class="answer ${answers[i]===j?"good":""}" onclick="pick(${i},${j})">${a}</button>`).join("")}</div>`).join("")}
+function pick(i,j){answers[i]=j;renderA()}
+function score(){if(Object.keys(answers).length<aqdata.length){results.innerHTML="<div class='lock'>Please answer all four questions.</div>";return}let map=[["hvac","auto","heavy"],["welding","carpentry"],["electrical","plumbing","renewable"]],sc={};Object.keys(trades).forEach(k=>sc[k]=0);Object.values(answers).forEach(v=>map[v].forEach(k=>sc[k]++));let sorted=Object.entries(sc).sort((a,b)=>b[1]-a[1]);let max=Math.max(...Object.values(sc));results.innerHTML=`<div class="card"><div class="sectiontag">Your Career Match</div><h2>Trades to explore first</h2><p class="muted">This reflects your selected interests, not your ability or future job success.</p>${sorted.map(([k,v])=>`<div class="result"><b>${trades[k].name}</b><div class="progress"><span style="width:${Math.round(v/max*100)}%"></span></div><span>${Math.round(v/max*100)}%</span></div>`).join("")}<button style="width:100%" onclick="openTrade('${sorted[0][0]}')">Explore my top match</button></div>`;results.scrollIntoView({behavior:"smooth"})}
+</script></body></html>
