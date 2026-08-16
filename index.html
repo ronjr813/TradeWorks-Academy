@@ -1,65 +1,135 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TradeWorks Academy V2</title><link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071729">
+<title>TradeWorks Academy V3</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header><div class="brand"><b>TW</b><span>TRADEWORKS<br><small>ACADEMY</small></span></div><button id="menu">☰</button>
-<nav id="nav"><a href="#home">Home</a><a href="#dash">Dashboard</a><a href="#academies">Academies</a><a href="#membership">Membership</a></nav></header>
+<header class="topbar">
+  <a class="brand" href="#home"><div class="brandmark">TW</div><div><strong>TRADEWORKS</strong><span>ACADEMY</span></div></a>
+  <button id="menuBtn" class="menu">☰</button>
+  <nav id="nav">
+    <a href="#home">Home</a>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#academies">Academies</a>
+    <a href="#membership">Membership</a>
+  </nav>
+</header>
 
-<main>
-<section id="home" class="hero">
-<div><p class="eyebrow">VERSION 2 • STUDENT TRAINING PLATFORM</p><h1>BUILD YOUR FUTURE.<br><em>ONE SKILL AT A TIME.</em></h1>
-<p class="lead">Explore careers for free, then progress into structured HVAC, Electrical, and Plumbing training with quizzes, service-call simulations, TradePoints, and premium learning paths.</p>
-<div class="actions"><button class="primary" id="profileBtn">Create Student Profile</button><a class="secondary" href="#academies">Explore Academies</a></div></div>
-<div class="mock"><div class="mocktop">STUDENT DASHBOARD</div><div class="student"><div class="avatar">ST</div><div><small>APPRENTICE LEVEL 1</small><h3>Welcome back</h3><p>Next: HVAC Electrical Controls</p></div></div>
-<div class="mini"><b>HVAC</b><span>35%</span><i style="width:35%"></i></div><div class="mini"><b>Electrical</b><span>15%</span><i style="width:15%"></i></div><div class="mini"><b>Plumbing</b><span>10%</span><i style="width:10%"></i></div></div>
+<main id="app">
+<section id="home" class="hero section">
+  <div class="hero-copy">
+    <div class="eyebrow">VERSION 3 • ACTIVE TRAINING PLATFORM</div>
+    <h1>LEARN THE TRADE.<br><span>DO THE WORK.</span></h1>
+    <p>Choose HVAC, Electrical, or Plumbing. Complete lessons, pass knowledge checks, solve service calls, earn TradePoints, and build a training record.</p>
+    <div class="actions">
+      <button class="btn primary" id="startBtn">Start Training</button>
+      <a class="btn secondary" href="#academies">Explore Academies</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="dash-preview">
+      <div class="preview-top">STUDENT TRAINING RECORD</div>
+      <div class="profile-row"><div class="avatar">ST</div><div><small id="previewLevel">APPRENTICE LEVEL 1</small><h3 id="previewName">Future Trades Professional</h3><p id="previewNext">Choose your first lesson</p></div></div>
+      <div class="mini-stat"><span>TradePoints</span><b id="previewPoints">0</b></div>
+      <div class="mini-stat"><span>Lessons Completed</span><b id="previewLessons">0</b></div>
+      <div class="mini-stat"><span>Challenges Passed</span><b id="previewChallenges">0</b></div>
+    </div>
+  </div>
 </section>
 
-<section class="strip"><div><b>FREE</b><span>Career exploration</span></div><div><b>3</b><span>Academies</span></div><div><b>PAID</b><span>Advanced training</span></div><div><b>1</b><span>Student dashboard</span></div></section>
+<section class="strip">
+  <div><b>3</b><span>Trades at launch</span></div>
+  <div><b>WORKING</b><span>Lessons & quizzes</span></div>
+  <div><b>TRACKED</b><span>Student progress</span></div>
+  <div><b>PREMIUM</b><span>Advanced paths</span></div>
+</section>
 
-<section id="dash" class="section">
-<p class="eyebrow">STUDENT EXPERIENCE</p><h2>Your academy dashboard.</h2><p class="sub">Progress, TradePoints, learning paths, and paid content all live in one student experience.</p>
-<div class="dash">
-<aside><div class="avatar big">ST</div><small>STUDENT</small><h3 id="studentName">Future Trades Professional</h3><p>Apprentice Level <span id="level">1</span></p><div class="points"><b id="points">0</b><span>TradePoints</span></div></aside>
-<div class="dashmain">
-<div class="continue"><div><small>CONTINUE TRAINING</small><h3>HVAC Fundamentals</h3><p>Resume: Thermostats, transformers, contactors, and relays.</p></div><button class="primary open" data-trade="HVAC">Continue</button></div>
-<div class="stats"><div><b id="doneCount">0</b><span>Lessons completed</span></div><div><b id="challengeCount">0</b><span>Challenges passed</span></div><div><b>3</b><span>Academies</span></div></div>
-<div class="progressgrid">
-<div><b>❄️ HVAC</b><span id="hpct">0%</span><i id="hbar"></i></div>
-<div><b>⚡ Electrical</b><span id="epct">0%</span><i id="ebar"></i></div>
-<div><b>🔧 Plumbing</b><span id="ppct">0%</span><i id="pbar"></i></div>
-</div>
-</div></div>
+<section id="dashboard" class="section">
+  <div class="section-head"><div class="eyebrow">YOUR TRAINING</div><h2>Student Dashboard</h2><p>Every completed lesson and service call updates your progress on this device.</p></div>
+  <div class="dashboard">
+    <aside class="student-panel">
+      <div class="avatar large">ST</div>
+      <span>STUDENT</span>
+      <h3 id="studentName">Future Trades Professional</h3>
+      <p id="studentGoal">Career Explorer</p>
+      <div class="points"><b id="points">0</b><span>TradePoints</span></div>
+      <button class="sidebtn" id="editProfile">Edit Profile</button>
+    </aside>
+    <div class="dashboard-main">
+      <div class="continue-card">
+        <div><div class="eyebrow">NEXT RECOMMENDED</div><h3 id="nextTitle">Start with HVAC Safety & Tools</h3><p id="nextCopy">Begin a free foundation lesson.</p></div>
+        <button class="btn primary" id="continueBtn">Continue Training</button>
+      </div>
+      <div class="stats">
+        <div><b id="completedLessons">0</b><span>Lessons completed</span></div>
+        <div><b id="passedChallenges">0</b><span>Challenges passed</span></div>
+        <div><b id="level">1</b><span>Student level</span></div>
+      </div>
+      <div class="progress-grid">
+        <div><header><b>❄️ HVAC</b><span id="hvacPct">0%</span></header><div class="bar"><i id="hvacBar"></i></div></div>
+        <div><header><b>⚡ Electrical</b><span id="elecPct">0%</span></header><div class="bar"><i id="elecBar"></i></div></div>
+        <div><header><b>🔧 Plumbing</b><span id="plumbPct">0%</span></header><div class="bar"><i id="plumbBar"></i></div></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="academies" class="section alt">
-<p class="eyebrow">TRAINING ACADEMIES</p><h2>Free foundations. Premium progression.</h2><p class="sub">All three trades launch together. Each has free introductory training and premium advanced lessons.</p>
-<div class="cards">
-<article><div class="icon">❄️</div><small>HVAC ACADEMY</small><h3>Heating & Air</h3><p>Electrical controls, airflow, refrigeration basics, motors, diagnostics, and service calls.</p><button class="primary open" data-trade="HVAC">Open Academy</button></article>
-<article><div class="icon">⚡</div><small>ELECTRICAL ACADEMY</small><h3>Electrical</h3><p>Safety, circuits, devices, panels, wiring methods, measurements, and troubleshooting.</p><button class="primary open" data-trade="Electrical">Open Academy</button></article>
-<article><div class="icon">🔧</div><small>PLUMBING ACADEMY</small><h3>Plumbing</h3><p>Water supply, DWV, fixtures, heaters, pumps, pressure, and service diagnostics.</p><button class="primary open" data-trade="Plumbing">Open Academy</button></article>
-</div></section>
-
-<section class="section"><p class="eyebrow">INTERACTIVE TRAINING</p><h2>Learn → Quiz → Service Call.</h2>
-<div class="flow"><div><b>1</b><h3>Micro Lesson</h3><p>Teach one focused concept.</p></div><div><b>2</b><h3>Knowledge Check</h3><p>Confirm the student understands it.</p></div><div><b>3</b><h3>Simulation</h3><p>Apply the skill to a realistic job.</p></div></div>
-<div class="challenge"><div><small>FREE HVAC SERVICE CALL</small><h3>Outdoor Unit Will Not Start</h3>
-<div class="facts"><span>Thermostat: <b>Calling for cool</b></span><span>Coil: <b>24.4 VAC</b></span><span>Line voltage: <b>Present</b></span></div>
-<h4>What should you check next?</h4><div id="choices"><button data-c="0">Replace the thermostat</button><button data-c="1">Verify the contactor is pulling in and passing power</button><button data-c="0">Add refrigerant</button><button data-c="0">Replace the blower motor</button></div><p id="feedback"></p></div>
-<aside><small>TRAINING PHILOSOPHY</small><h3>Teach why, not just what.</h3><p>Students learn what each measurement proves, what it rules out, and what the next safe test should be.</p></aside></div>
+  <div class="section-head"><div class="eyebrow">CHOOSE YOUR ACADEMY</div><h2>Three trades. One membership.</h2><p>Free foundation lessons let students experience each field before upgrading to advanced training.</p></div>
+  <div class="academy-grid">
+    <article><div class="icon">❄️</div><small>HVAC ACADEMY</small><h3>HVAC</h3><p>Safety, electrical controls, motors, airflow, refrigeration, diagnostics, and service calls.</p><button class="btn primary open-trade" data-trade="HVAC">Open HVAC</button></article>
+    <article><div class="icon">⚡</div><small>ELECTRICAL ACADEMY</small><h3>Electrical</h3><p>Safety, circuits, devices, wiring, panels, measurements, motors, and troubleshooting.</p><button class="btn primary open-trade" data-trade="Electrical">Open Electrical</button></article>
+    <article><div class="icon">🔧</div><small>PLUMBING ACADEMY</small><h3>Plumbing</h3><p>Tools, water supply, DWV, fixtures, valves, water heaters, pressure, and troubleshooting.</p><button class="btn primary open-trade" data-trade="Plumbing">Open Plumbing</button></article>
+  </div>
 </section>
 
-<section id="membership" class="section alt"><p class="eyebrow">REVENUE MODEL</p><h2>Built for free discovery and paid training.</h2><p class="sub">These payment buttons are demo-only until a secure backend is connected.</p>
-<div class="pricing"><article><small>EXPLORER</small><h3>Free</h3><p>Career exploration, trade overviews, starter lessons, and selected challenges.</p><button class="secondary">Current Access</button></article>
-<article class="featured"><small>STUDENT</small><h3>$19.99<em>/mo</em></h3><p>All three academies, advanced lessons, simulations, progress, assessments, and badges.</p><button class="primary" id="upgrade">Unlock Full Academy</button></article>
-<article><small>SCHOOLS & EMPLOYERS</small><h3>Custom</h3><p>Bulk seats, progress reporting, workforce training, recruiting, and sponsored access.</p><button class="secondary" id="org">Request Demo</button></article></div></section>
+<section id="membership" class="section">
+  <div class="section-head"><div class="eyebrow">MEMBERSHIP</div><h2>Free discovery. Paid progression.</h2><p>This Version 3 includes a working premium lock/unlock demo. Real payment processing comes when a secure backend is connected.</p></div>
+  <div class="pricing">
+    <article><small>EXPLORER</small><h3>Free</h3><p>Career exploration, first two lessons in each academy, quizzes, and selected service calls.</p><button class="btn secondary">Current Plan</button></article>
+    <article class="featured"><small>STUDENT</small><h3>$19.99<span>/month</span></h3><p>All three academies, advanced lessons, advanced service calls, progress tracking, and completion badges.</p><button class="btn primary" id="upgradeBtn">Unlock Full Academy</button></article>
+    <article><small>SCHOOLS & EMPLOYERS</small><h3>Custom</h3><p>Bulk student access, workforce training, reporting, recruiting, and sponsored seats.</p><button class="btn secondary" id="orgBtn">Request Demo</button></article>
+  </div>
+</section>
 </main>
 
-<div class="modal" id="profileModal"><div class="modalbox"><button class="close">×</button><small>STUDENT PROFILE</small><h2>Create your prototype profile</h2><p>This demo stores only on this device.</p><input id="nameInput" placeholder="Your name"><button class="primary" id="saveProfile">Save Profile</button></div></div>
-<div class="modal" id="academyModal"><div class="modalbox wide"><button class="close">×</button><small id="tradeLabel"></small><h2 id="tradeTitle"></h2><p>Complete free foundation lessons first. Premium modules demonstrate the future paid academy.</p><div id="lessonList"></div></div></div>
-<div class="modal" id="upgradeModal"><div class="modalbox"><button class="close">×</button><small>PREMIUM DEMO</small><h2>Full Academy Membership</h2><p>In production, this would open secure checkout. For now it demonstrates the paywall.</p><p>✓ Advanced lessons<br>✓ Service-call simulations<br>✓ Progress & badges<br>✓ All three academies</p><button class="primary" id="demoUnlock">Demo Unlock Premium</button></div></div>
+<div class="modal" id="profileModal">
+  <div class="modal-card">
+    <button class="close">×</button><div class="eyebrow">STUDENT PROFILE</div><h2>Set up your training profile</h2>
+    <label>Name<input id="nameInput" placeholder="Your name"></label>
+    <label>Primary interest<select id="interestInput"><option>Undecided</option><option>HVAC</option><option>Electrical</option><option>Plumbing</option></select></label>
+    <label>Goal<select id="goalInput"><option>Explore a career</option><option>Prepare for trade school</option><option>Prepare for an apprenticeship</option><option>Improve job skills</option></select></label>
+    <button class="btn primary" id="saveProfile">Save & Start Training</button>
+  </div>
+</div>
 
-<footer><div class="brand"><b>TW</b><span>TRADEWORKS<br><small>ACADEMY</small></span></div><p>Real Skills. Real Careers. Real Impact.</p><small>Version 2 prototype — secure accounts, real payments, student records, and institutional reporting require a production backend.</small></footer>
+<div class="modal" id="tradeModal">
+  <div class="modal-card wide">
+    <button class="close">×</button><div class="eyebrow" id="tradeEyebrow"></div><h2 id="tradeTitle"></h2><p id="tradeIntro"></p>
+    <div class="lesson-list" id="lessonList"></div>
+  </div>
+</div>
+
+<div class="modal" id="lessonModal">
+  <div class="modal-card lesson-modal">
+    <button class="close">×</button>
+    <div id="lessonView"></div>
+  </div>
+</div>
+
+<div class="modal" id="upgradeModal">
+  <div class="modal-card">
+    <button class="close">×</button><div class="eyebrow">PREMIUM MEMBERSHIP</div><h2>Unlock the Full Academy</h2>
+    <p>Production Version 3 will connect this screen to secure checkout. The button below unlocks premium only as a local demo.</p>
+    <div class="checklist">✓ All advanced lessons<br>✓ All service-call simulations<br>✓ Progress and badges<br>✓ HVAC + Electrical + Plumbing</div>
+    <button class="btn primary" id="demoUnlock">Demo Unlock Premium</button>
+  </div>
+</div>
+
+<footer><div class="brand"><div class="brandmark">TW</div><div><strong>TRADEWORKS</strong><span>ACADEMY</span></div></div><p>Real Skills. Real Careers. Real Impact.</p><small>V3 prototype: real accounts, payments, production student records, certificates, and institutional reporting require a secure backend.</small></footer>
 <script src="app.js"></script>
 </body></html>
