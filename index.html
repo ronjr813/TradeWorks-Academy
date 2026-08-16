@@ -2,840 +2,134 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#0e1114">
-<title>Mechanic Shop — Garage Career</title>
-<style>
-:root{
-  --bg:#0d1013;--panel:#171b20;--panel2:#20252b;--line:#343b44;--text:#f4f6f8;
-  --muted:#adb5bf;--gold:#f4bd3f;--green:#50c878;--red:#df6464;--blue:#5ea8ff;--orange:#ef9f43;
-}
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
-body{min-height:100vh}
-header{
-  position:sticky;top:0;z-index:20;background:#13171b;border-bottom:1px solid var(--line);
-  padding:12px 14px calc(12px + env(safe-area-inset-top));
-  display:flex;align-items:center;justify-content:space-between;gap:10px
-}
-h1{font-size:20px;margin:0;white-space:nowrap}
-.header-right{display:flex;gap:8px;align-items:center}
-.cash{font-size:19px;font-weight:900;color:#ffd875}
-.levelpill{background:#262c32;border:1px solid #3b434d;border-radius:999px;padding:6px 9px;font-size:12px;font-weight:800}
-main{max-width:800px;margin:auto;padding:12px 12px calc(40px + env(safe-area-inset-bottom))}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px}
-h2,h3,h4{margin:0 0 10px}.muted{color:var(--muted)}.small{font-size:13px}.tiny{font-size:11px}
-.toprow{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
-.badge{display:inline-flex;align-items:center;gap:4px;background:#252b31;border:1px solid #343b44;border-radius:999px;padding:5px 8px;font-size:12px}
-.badge.hard{background:#3a241f;border-color:#6e3d31}.badge.med{background:#322d1d;border-color:#685c31}.badge.easy{background:#173321;border-color:#2b7040}
-.vehicle-stage{height:210px;border-radius:13px;background:linear-gradient(#515960,#282d32);position:relative;overflow:hidden;margin:12px 0}
-.lift{position:absolute;left:4%;right:4%;bottom:26px;height:5px;background:#777}
-.car{position:absolute;left:9%;right:8%;bottom:47px;height:62px;background:#dedede;border-radius:25px 42px 10px 10px}
-.car:before{content:"";position:absolute;left:28%;right:24%;top:-35px;height:48px;background:#c9c9c9;border-radius:28px 34px 2px 2px}
-.car:after{content:"";position:absolute;left:34%;right:31%;top:-29px;height:27px;background:#26343e;border-radius:12px}
-.truck{border-radius:10px 28px 8px 8px;height:68px}.truck:before{left:58%;right:4%;top:-37px;height:64px}.truck:after{left:65%;right:9%;top:-29px}
-.suv{height:75px;border-radius:25px 28px 8px 8px}.suv:before{left:20%;right:11%;top:-30px;height:49px}.suv:after{left:28%;right:20%;top:-23px}
-.wheel{position:absolute;bottom:-24px;width:54px;height:54px;border-radius:50%;background:#111;border:9px solid #777}
-.wl{left:13%}.wr{right:12%}
-.smoke{position:absolute;right:5%;top:30px;font-size:34px;opacity:.8;display:none}
-.warning{position:absolute;left:5%;top:16px;background:#9e6b16;color:#111;border-radius:8px;padding:6px 8px;font-weight:900;display:none}
-.status{padding:12px;border-radius:11px;background:#302b1c;border:1px solid #6c5920;line-height:1.45}
-.status.good{background:#173421;border-color:#2f7544}.status.bad{background:#391e1e;border-color:#784040}.status.info{background:#182a3e;border-color:#315b88}
-button{
-  width:100%;min-height:49px;border:0;border-radius:11px;background:#2a3036;color:#fff;
-  font-size:15px;font-weight:800;padding:10px 9px;margin:4px 0;touch-action:manipulation
-}
-button:active{transform:scale(.985);background:#3a4149}
-button:disabled{opacity:.42}
-.primary{background:#c8901c;color:#111}.goodbtn{background:#2f7c48}.danger{background:#8e3b3b}.blue{background:#325f92}.orange{background:#925d27}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.grid2 button{margin:0}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
-.stat{background:#242a30;border-radius:10px;padding:9px 4px;text-align:center}
-.stat b{display:block;font-size:18px}.stat span{font-size:10px;color:var(--muted)}
-.toolrow{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.tool{background:#22272d;border:1px solid #333a43;border-radius:11px;padding:10px;min-height:72px}
-.tool b{display:block;margin-bottom:3px}
-.tool small{color:var(--muted)}
-.finding{padding:9px;border-radius:9px;background:#20252a;border-left:4px solid #5d6670;margin:7px 0;font-size:13px;line-height:1.4}
-.finding.good{border-left-color:var(--green)}.finding.bad{border-left-color:var(--red)}.finding.info{border-left-color:var(--blue)}
-.parts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.partbtn{background:#252a30;border:1px solid #3a4149}
-.partbtn.selected{outline:2px solid var(--gold);background:#342d1e}
-.progresswrap{height:9px;background:#292e34;border-radius:8px;overflow:hidden}.progressbar{height:100%;background:#4e9e69;width:0}
-.moneyrow{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-top:1px solid #30363e}
-.log{height:165px;overflow:auto;background:#090b0d;border-radius:10px;padding:9px;font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace;color:#d3d8dd}
-.upgrade{background:#20252b;border:1px solid #343b44;border-radius:12px;padding:11px;margin:8px 0}
-.upgrade h4{margin-bottom:5px}
-.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.customer-rating{font-size:26px;letter-spacing:2px}
-.modal{position:fixed;inset:0;background:#000c;display:none;align-items:flex-end;z-index:40}
-.modal.show{display:flex}
-.sheet{width:100%;background:#191d22;border-radius:18px 18px 0 0;padding:18px;max-height:82vh;overflow:auto}
-.sheet h2{margin-bottom:8px}
-#toast{position:fixed;left:12px;right:12px;bottom:18px;z-index:60;display:none;background:#101317;border:1px solid #444c55;border-radius:12px;padding:12px;text-align:center;font-weight:800}
-#toast.show{display:block}
-.navtabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px}
-.navtabs button{font-size:12px;min-height:42px;background:#20252a}
-.navtabs button.active{background:#3a424c}
-.screen{display:none}.screen.active{display:block}
-@media(max-width:430px){
-  .grid3{grid-template-columns:repeat(2,1fr)}
-  .toolrow,.parts{grid-template-columns:1fr 1fr}
-  h1{font-size:19px}
-}
-</style>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071729">
+<title>TradeWorks Academy V3</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header>
-  <h1>🔧 Mechanic Shop</h1>
-  <div class="header-right">
-    <div class="levelpill">Lv <span id="levelTop">1</span></div>
-    <div class="cash">$<span id="cash">750</span></div>
-  </div>
+<header class="topbar">
+  <a class="brand" href="#home"><div class="brandmark">TW</div><div><strong>TRADEWORKS</strong><span>ACADEMY</span></div></a>
+  <button id="menuBtn" class="menu">☰</button>
+  <nav id="nav">
+    <a href="#home">Home</a>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#academies">Academies</a>
+    <a href="#membership">Membership</a>
+  </nav>
 </header>
 
-<main>
-<div class="navtabs">
-  <button id="tabJob" class="active" onclick="showScreen('job')">Job</button>
-  <button id="tabShop" onclick="showScreen('shop')">Shop</button>
-  <button id="tabStats" onclick="showScreen('stats')">Stats</button>
-  <button id="tabLog" onclick="showScreen('logscreen')">Log</button>
-</div>
+<main id="app">
+<section id="home" class="hero section">
+  <div class="hero-copy">
+    <div class="eyebrow">VERSION 3 • ACTIVE TRAINING PLATFORM</div>
+    <h1>LEARN THE TRADE.<br><span>DO THE WORK.</span></h1>
+    <p>Choose HVAC, Electrical, or Plumbing. Complete lessons, pass knowledge checks, solve service calls, earn TradePoints, and build a training record.</p>
+    <div class="actions">
+      <button class="btn primary" id="startBtn">Start Training</button>
+      <a class="btn secondary" href="#academies">Explore Academies</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="dash-preview">
+      <div class="preview-top">STUDENT TRAINING RECORD</div>
+      <div class="profile-row"><div class="avatar">ST</div><div><small id="previewLevel">APPRENTICE LEVEL 1</small><h3 id="previewName">Future Trades Professional</h3><p id="previewNext">Choose your first lesson</p></div></div>
+      <div class="mini-stat"><span>TradePoints</span><b id="previewPoints">0</b></div>
+      <div class="mini-stat"><span>Lessons Completed</span><b id="previewLessons">0</b></div>
+      <div class="mini-stat"><span>Challenges Passed</span><b id="previewChallenges">0</b></div>
+    </div>
+  </div>
+</section>
 
-<section id="screenJob" class="screen active">
-  <div class="card">
-    <div class="toprow">
-      <div>
-        <div class="small muted" id="jobNo">WORK ORDER #001</div>
-        <h2 id="vehicleName">Loading...</h2>
+<section class="strip">
+  <div><b>3</b><span>Trades at launch</span></div>
+  <div><b>WORKING</b><span>Lessons & quizzes</span></div>
+  <div><b>TRACKED</b><span>Student progress</span></div>
+  <div><b>PREMIUM</b><span>Advanced paths</span></div>
+</section>
+
+<section id="dashboard" class="section">
+  <div class="section-head"><div class="eyebrow">YOUR TRAINING</div><h2>Student Dashboard</h2><p>Every completed lesson and service call updates your progress on this device.</p></div>
+  <div class="dashboard">
+    <aside class="student-panel">
+      <div class="avatar large">ST</div>
+      <span>STUDENT</span>
+      <h3 id="studentName">Future Trades Professional</h3>
+      <p id="studentGoal">Career Explorer</p>
+      <div class="points"><b id="points">0</b><span>TradePoints</span></div>
+      <button class="sidebtn" id="editProfile">Edit Profile</button>
+    </aside>
+    <div class="dashboard-main">
+      <div class="continue-card">
+        <div><div class="eyebrow">NEXT RECOMMENDED</div><h3 id="nextTitle">Start with HVAC Safety & Tools</h3><p id="nextCopy">Begin a free foundation lesson.</p></div>
+        <button class="btn primary" id="continueBtn">Continue Training</button>
       </div>
-      <div class="customer-rating" id="stars">⭐⭐⭐⭐⭐</div>
-    </div>
-
-    <div class="vehicle-stage">
-      <div id="vehicleBody" class="car">
-        <div class="wheel wl"></div><div class="wheel wr"></div>
+      <div class="stats">
+        <div><b id="completedLessons">0</b><span>Lessons completed</span></div>
+        <div><b id="passedChallenges">0</b><span>Challenges passed</span></div>
+        <div><b id="level">1</b><span>Student level</span></div>
       </div>
-      <div class="lift"></div>
-      <div id="smoke" class="smoke">💨</div>
-      <div id="warning" class="warning">⚠️ WARNING</div>
+      <div class="progress-grid">
+        <div><header><b>❄️ HVAC</b><span id="hvacPct">0%</span></header><div class="bar"><i id="hvacBar"></i></div></div>
+        <div><header><b>⚡ Electrical</b><span id="elecPct">0%</span></header><div class="bar"><i id="elecBar"></i></div></div>
+        <div><header><b>🔧 Plumbing</b><span id="plumbPct">0%</span></header><div class="bar"><i id="plumbBar"></i></div></div>
+      </div>
     </div>
-
-    <div><b>Customer:</b> “<span id="complaint"></span>”</div>
-    <div class="badges">
-      <span id="difficultyBadge" class="badge">Difficulty</span>
-      <span class="badge">Estimate: $<span id="invoice">0</span></span>
-      <span class="badge">Diagnostic fee: $<span id="diagFee">0</span></span>
-    </div>
-    <div id="status" class="status">Start by talking to the customer and inspecting the vehicle.</div>
-  </div>
-
-  <div class="card">
-    <h3>🧭 Diagnostic Workflow</h3>
-    <div class="grid2">
-      <button onclick="customerInterview()">Customer Interview</button>
-      <button onclick="inspectVehicle()">Visual Inspection</button>
-      <button onclick="scanVehicle()">Scan Modules</button>
-      <button onclick="viewLiveData()">Live Data</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>🧪 Tests</h3>
-    <div class="grid2">
-      <button onclick="runTest('battery')">Battery / Charging</button>
-      <button onclick="runTest('ignition')">Ignition / Misfire</button>
-      <button onclick="runTest('fuel')">Fuel Pressure / Injector</button>
-      <button onclick="runTest('air')">Smoke / Intake Leak</button>
-      <button onclick="runTest('wiring')">Wiring / Sensor Signal</button>
-      <button onclick="runTest('brakes')">Brake / ABS Inspection</button>
-      <button onclick="runTest('cooling')">Cooling System</button>
-      <button onclick="runTest('exhaust')">Exhaust / Aftertreatment</button>
-      <button onclick="runTest('transmission')">Transmission Data</button>
-      <button onclick="runTest('suspension')">Steering / Suspension</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>📝 Findings</h3>
-    <div id="findings"><div class="finding info">No diagnostic findings yet.</div></div>
-  </div>
-
-  <div class="card">
-    <h3>🔩 Choose Repair</h3>
-    <div id="partsList" class="parts"></div>
-    <div id="selectedPartText" class="small muted" style="margin-top:8px">No repair selected.</div>
-    <div class="grid2" style="margin-top:8px">
-      <button class="primary" onclick="performRepair()">Install Selected Repair</button>
-      <button class="goodbtn" onclick="verifyRepair()">Verify / Road Test</button>
-    </div>
-    <button onclick="nextCustomer()">➡️ Next Customer</button>
-  </div>
-
-  <div class="card">
-    <h3>💵 Job Profit</h3>
-    <div class="moneyrow"><span class="small">Diagnostic costs</span><b>-$<span id="diagCost">0</span></b></div>
-    <div class="moneyrow"><span class="small">Parts cost</span><b>-$<span id="partsCost">0</span></b></div>
-    <div class="moneyrow"><span class="small">Projected customer payment</span><b>+$<span id="projectedPay">0</span></b></div>
-    <div class="moneyrow"><span>Projected profit</span><b id="profit">$0</b></div>
   </div>
 </section>
 
-<section id="screenShop" class="screen">
-  <div class="card">
-    <h3>🏪 Garage Upgrades</h3>
-
-    <div class="upgrade">
-      <div class="row"><h4>Professional Scan Tool</h4><b>Lv <span id="scanLvl">0</span>/4</b></div>
-      <div class="small muted">Adds better code descriptions, freeze-frame hints and cheaper module scans.</div>
-      <button class="blue" onclick="buyUpgrade('scanner')">Upgrade — $<span id="scanPrice">800</span></button>
-    </div>
-
-    <div class="upgrade">
-      <div class="row"><h4>Diagnostic Tool Cart</h4><b>Lv <span id="toolsLvl">0</span>/4</b></div>
-      <div class="small muted">Reduces test costs and gives better measurements.</div>
-      <button class="blue" onclick="buyUpgrade('tools')">Upgrade — $<span id="toolsPrice">950</span></button>
-    </div>
-
-    <div class="upgrade">
-      <div class="row"><h4>Wholesale Parts Account</h4><b>Lv <span id="partsLvl">0</span>/4</b></div>
-      <div class="small muted">Lowers parts prices and improves job profit.</div>
-      <button class="blue" onclick="buyUpgrade('parts')">Upgrade — $<span id="partsPrice">1200</span></button>
-    </div>
-
-    <div class="upgrade">
-      <div class="row"><h4>Shop Reputation Ads</h4><b>Lv <span id="adsLvl">0</span>/4</b></div>
-      <div class="small muted">Higher-paying customers show up more often.</div>
-      <button class="blue" onclick="buyUpgrade('ads')">Upgrade — $<span id="adsPrice">1400</span></button>
-    </div>
-
-    <div class="upgrade">
-      <div class="row"><h4>Extra Service Bay</h4><b>Lv <span id="bayLvl">0</span>/3</b></div>
-      <div class="small muted">Adds a completion bonus to every successful job.</div>
-      <button class="blue" onclick="buyUpgrade('bay')">Upgrade — $<span id="bayPrice">2000</span></button>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3>🎯 Career Unlocks</h3>
-    <div id="unlocks" class="small"></div>
+<section id="academies" class="section alt">
+  <div class="section-head"><div class="eyebrow">CHOOSE YOUR ACADEMY</div><h2>Three trades. One membership.</h2><p>Free foundation lessons let students experience each field before upgrading to advanced training.</p></div>
+  <div class="academy-grid">
+    <article><div class="icon">❄️</div><small>HVAC ACADEMY</small><h3>HVAC</h3><p>Safety, electrical controls, motors, airflow, refrigeration, diagnostics, and service calls.</p><button class="btn primary open-trade" data-trade="HVAC">Open HVAC</button></article>
+    <article><div class="icon">⚡</div><small>ELECTRICAL ACADEMY</small><h3>Electrical</h3><p>Safety, circuits, devices, wiring, panels, measurements, motors, and troubleshooting.</p><button class="btn primary open-trade" data-trade="Electrical">Open Electrical</button></article>
+    <article><div class="icon">🔧</div><small>PLUMBING ACADEMY</small><h3>Plumbing</h3><p>Tools, water supply, DWV, fixtures, valves, water heaters, pressure, and troubleshooting.</p><button class="btn primary open-trade" data-trade="Plumbing">Open Plumbing</button></article>
   </div>
 </section>
 
-<section id="screenStats" class="screen">
-  <div class="card">
-    <h3>📈 Career Stats</h3>
-    <div class="grid3">
-      <div class="stat"><b id="rep">0</b><span>Reputation</span></div>
-      <div class="stat"><b id="jobsDone">0</b><span>Jobs Done</span></div>
-      <div class="stat"><b id="level">1</b><span>Shop Level</span></div>
-      <div class="stat"><b id="streak">0</b><span>Win Streak</span></div>
-      <div class="stat"><b id="perfectJobs">0</b><span>Perfect Jobs</span></div>
-      <div class="stat"><b id="mistakes">0</b><span>Misdiagnoses</span></div>
-    </div>
-    <div style="margin-top:12px" class="small">Level progress</div>
-    <div class="progresswrap"><div id="levelProgress" class="progressbar"></div></div>
-  </div>
-
-  <div class="card">
-    <h3>🏆 Achievements</h3>
-    <div id="achievements"></div>
-  </div>
-
-  <div class="card">
-    <h3>💾 Save Data</h3>
-    <div class="grid2">
-      <button onclick="saveGame(true)">Save Game</button>
-      <button onclick="loadGame(true)">Load Game</button>
-    </div>
-    <button class="danger" onclick="resetGame()">Reset Career</button>
-    <div class="tiny muted">Progress automatically saves on this iPhone/browser.</div>
-  </div>
-</section>
-
-<section id="screenLogscreen" class="screen">
-  <div class="card">
-    <h3>📋 Shop Log</h3>
-    <div id="log" class="log"></div>
+<section id="membership" class="section">
+  <div class="section-head"><div class="eyebrow">MEMBERSHIP</div><h2>Free discovery. Paid progression.</h2><p>This Version 3 includes a working premium lock/unlock demo. Real payment processing comes when a secure backend is connected.</p></div>
+  <div class="pricing">
+    <article><small>EXPLORER</small><h3>Free</h3><p>Career exploration, first two lessons in each academy, quizzes, and selected service calls.</p><button class="btn secondary">Current Plan</button></article>
+    <article class="featured"><small>STUDENT</small><h3>$19.99<span>/month</span></h3><p>All three academies, advanced lessons, advanced service calls, progress tracking, and completion badges.</p><button class="btn primary" id="upgradeBtn">Unlock Full Academy</button></article>
+    <article><small>SCHOOLS & EMPLOYERS</small><h3>Custom</h3><p>Bulk student access, workforce training, reporting, recruiting, and sponsored seats.</p><button class="btn secondary" id="orgBtn">Request Demo</button></article>
   </div>
 </section>
 </main>
 
-<div id="resultModal" class="modal">
-  <div class="sheet">
-    <h2 id="resultTitle">Job Complete</h2>
-    <div id="resultBody"></div>
-    <button class="primary" onclick="closeModal()">Continue</button>
+<div class="modal" id="profileModal">
+  <div class="modal-card">
+    <button class="close">×</button><div class="eyebrow">STUDENT PROFILE</div><h2>Set up your training profile</h2>
+    <label>Name<input id="nameInput" placeholder="Your name"></label>
+    <label>Primary interest<select id="interestInput"><option>Undecided</option><option>HVAC</option><option>Electrical</option><option>Plumbing</option></select></label>
+    <label>Goal<select id="goalInput"><option>Explore a career</option><option>Prepare for trade school</option><option>Prepare for an apprenticeship</option><option>Improve job skills</option></select></label>
+    <button class="btn primary" id="saveProfile">Save & Start Training</button>
   </div>
 </div>
 
-<div id="toast"></div>
+<div class="modal" id="tradeModal">
+  <div class="modal-card wide">
+    <button class="close">×</button><div class="eyebrow" id="tradeEyebrow"></div><h2 id="tradeTitle"></h2><p id="tradeIntro"></p>
+    <div class="lesson-list" id="lessonList"></div>
+  </div>
+</div>
 
-<script>
-const TEST_COSTS={
- interview:5,inspect:10,scan:20,livedata:25,
- battery:25,ignition:30,fuel:35,air:35,wiring:35,brakes:30,cooling:35,exhaust:45,transmission:45,suspension:30
-};
+<div class="modal" id="lessonModal">
+  <div class="modal-card lesson-modal">
+    <button class="close">×</button>
+    <div id="lessonView"></div>
+  </div>
+</div>
 
-const jobs=[
-{
- vehicle:"2017 Chevrolet Silverado • 5.3L V8",shape:"truck",complaint:"It runs rough and the check-engine light flashes when I accelerate.",
- difficulty:"Easy",pay:620,diagFee:95,code:"P0302",codeDesc:"Cylinder 2 misfire detected",
- symptom:"Engine shakes at idle; misfire counter climbs on cylinder 2.",system:"ignition",
- fault:"Ignition coil #2",partCost:148,
- parts:["Ignition coil #2","Spark plug #2","Fuel injector #2","Engine control module"],
- interview:"Customer says the problem started suddenly after a rainy night.",
- inspection:"No damaged connectors. Coil #2 boot shows light carbon tracking.",
- live:"Cylinder 2 misfire counter rises rapidly; fuel trims are normal.",
- testPass:"Ignition coil output is weak on cylinder 2; swapping the coil moves the misfire.",
- scanHint:"P0302 points to a cylinder-specific combustion problem."
-},
-{
- vehicle:"2019 Chevrolet Silverado • 5.3L V8",shape:"truck",complaint:"Sometimes it cranks but will not start. Other times it starts normally.",
- difficulty:"Medium",pay:760,diagFee:120,code:"P0335",codeDesc:"Crankshaft position sensor A circuit",
- symptom:"Intermittent no-start with no RPM signal during cranking.",system:"wiring",
- fault:"Crankshaft position sensor",partCost:96,
- parts:["Crankshaft position sensor","Starter motor","Fuel pump","Ignition switch"],
- interview:"Customer notices the no-start is worse after the engine is hot.",
- inspection:"Harness near the crank sensor looks intact; connector is fully seated.",
- live:"Engine speed reads 0 RPM during the no-start even though the engine is cranking.",
- testPass:"Sensor power and ground are good, but the crank signal disappears when hot.",
- scanHint:"P0335 plus no RPM signal strongly points toward crank-signal loss."
-},
-{
- vehicle:"2016 Ford F-150 • 5.0L V8",shape:"truck",complaint:"The battery light came on and now the truck keeps needing a jump.",
- difficulty:"Easy",pay:720,diagFee:90,code:"P0620",codeDesc:"Generator control circuit",symptom:"Battery voltage drops while driving.",system:"battery",
- fault:"Alternator",partCost:215,
- parts:["Alternator","Battery","Starter","Battery cable"],
- interview:"The battery was replaced last year.",
- inspection:"Serpentine belt is present and tight. Battery terminals are clean.",
- live:"Charging voltage stays at 12.1V with engine running and electrical load on.",
- testPass:"Alternator output is below specification even with correct command voltage.",
- scanHint:"P0620 indicates a charging-system control fault."
-},
-{
- vehicle:"2018 Ram 1500 • 5.7L HEMI",shape:"truck",complaint:"It idles high and hesitates when I take off from a stop.",
- difficulty:"Medium",pay:690,diagFee:110,code:"P0171",codeDesc:"System too lean bank 1",symptom:"High positive fuel trim at idle.",system:"air",
- fault:"Intake vacuum leak",partCost:74,
- parts:["Intake manifold gasket","Fuel pump","Oxygen sensor","Throttle body"],
- interview:"The problem is worst at idle and improves at higher RPM.",
- inspection:"No obvious disconnected vacuum hoses.",
- live:"Short-term fuel trim is +24% at idle and falls near normal at 2500 RPM.",
- testPass:"Smoke appears around the intake manifold gasket.",
- scanHint:"Lean at idle but better off-idle often suggests unmetered air."
-},
-{
- vehicle:"2020 Toyota Tacoma • 3.5L V6",shape:"truck",complaint:"The brake pedal feels soft and I have to push it farther than normal.",
- difficulty:"Medium",pay:730,diagFee:105,code:"C1249",codeDesc:"Brake fluid / hydraulic pressure concern",symptom:"Soft pedal and gradual fluid loss.",system:"brakes",
- fault:"Right rear brake hose",partCost:88,
- parts:["Right rear brake hose","Master cylinder","ABS module","Front brake pads"],
- interview:"Customer has noticed a small wet spot near the right rear wheel.",
- inspection:"Brake fluid is low; right rear hose area is damp.",
- live:"Hydraulic pressure builds slowly and drops after the pedal is held.",
- testPass:"Right rear flex hose is leaking under pedal pressure.",
- scanHint:"The stored brake code does not identify the leak location."
-},
-{
- vehicle:"2015 GMC Sierra 2500HD • 6.6L Duramax",shape:"truck",complaint:"It has very low power and says the exhaust filter is full.",
- difficulty:"Hard",pay:1120,diagFee:165,code:"P2463",codeDesc:"Diesel particulate filter soot accumulation",symptom:"High exhaust restriction under load.",system:"exhaust",
- fault:"Restricted DPF",partCost:285,
- parts:["DPF cleaning/service","Turbocharger","EGR valve","Fuel filter"],
- interview:"The truck has mostly been used for short trips lately.",
- inspection:"No boost leaks; exhaust smells heavily loaded with soot.",
- live:"DPF differential pressure is much higher than specification.",
- testPass:"Exhaust restriction is confirmed across the DPF.",
- scanHint:"P2463 plus high differential pressure confirms soot restriction."
-},
-{
- vehicle:"2014 Honda Accord • 2.4L",shape:"car",complaint:"It takes a long time to start and sometimes dies when I stop.",
- difficulty:"Medium",pay:720,diagFee:115,code:"P0087",codeDesc:"Fuel rail/system pressure too low",symptom:"Fuel pressure drops below target.",system:"fuel",
- fault:"Weak fuel pump",partCost:195,
- parts:["Fuel pump module","Fuel injector","Mass airflow sensor","Crankshaft sensor"],
- interview:"The problem gets worse when the fuel tank is below a quarter.",
- inspection:"No external fuel leaks. Electrical connections at the pump are clean.",
- live:"Fuel pressure drops sharply during acceleration.",
- testPass:"Pump current rises while delivered pressure remains below specification.",
- scanHint:"Low commanded-versus-actual fuel pressure points to supply trouble."
-},
-{
- vehicle:"2021 Ford Explorer • 2.3L Turbo",shape:"suv",complaint:"It overheats in traffic but the temperature comes back down on the highway.",
- difficulty:"Medium",pay:710,diagFee:110,code:"P0480",codeDesc:"Cooling fan 1 control circuit",symptom:"Cooling fan fails to run at idle.",system:"cooling",
- fault:"Cooling fan relay",partCost:68,
- parts:["Cooling fan relay","Thermostat","Water pump","Radiator"],
- interview:"A/C also stops cooling when the engine gets hot in traffic.",
- inspection:"Coolant level is correct; no visible coolant leaks.",
- live:"PCM commands the fan ON but fan speed remains 0.",
- testPass:"Fan motor runs with direct power; relay output is missing.",
- scanHint:"Command present + no fan operation means test the relay/control path."
-},
-{
- vehicle:"2013 Chevrolet Tahoe • 5.3L V8",shape:"suv",complaint:"It shakes at idle and smells like raw gasoline.",
- difficulty:"Medium",pay:725,diagFee:120,code:"P0204",codeDesc:"Injector circuit cylinder 4",symptom:"Cylinder 4 is rich and unstable.",system:"fuel",
- fault:"Fuel injector #4",partCost:125,
- parts:["Fuel injector #4","Ignition coil #4","Spark plug #4","Fuel pressure regulator"],
- interview:"Fuel mileage dropped quickly when the rough idle began.",
- inspection:"Spark plug #4 is fuel-fouled.",
- live:"Cylinder 4 injector balance is far outside the other cylinders.",
- testPass:"Injector #4 leaks and does not pass the balance test.",
- scanHint:"P0204 indicates an injector circuit problem on cylinder 4."
-},
-{
- vehicle:"2018 Ford Mustang GT • 5.0L",shape:"car",complaint:"It breaks up under heavy throttle but feels fine cruising around town.",
- difficulty:"Medium",pay:640,diagFee:105,code:"P0305",codeDesc:"Cylinder 5 misfire detected",symptom:"Load-dependent misfire on cylinder 5.",system:"ignition",
- fault:"Spark plug #5",partCost:34,
- parts:["Spark plug #5","Ignition coil #5","Fuel injector #5","Camshaft sensor"],
- interview:"The engine was tuned recently and the plugs have a lot of miles.",
- inspection:"Plug #5 gap is excessive and the porcelain shows a small crack.",
- live:"Cylinder 5 misfire occurs mainly under high load.",
- testPass:"Coil output is good; plug #5 fails under load due to excessive gap.",
- scanHint:"A load-only misfire can be ignition-related even when idle is smooth."
-},
-{
- vehicle:"2017 Chevrolet Cruze • 1.4L Turbo",shape:"car",complaint:"There is a whistle at idle and the check-engine light keeps coming back.",
- difficulty:"Hard",pay:690,diagFee:135,code:"P1101",codeDesc:"Intake airflow system performance",symptom:"Abnormal crankcase vacuum and lean idle.",system:"air",
- fault:"PCV diaphragm / valve cover",partCost:118,
- parts:["Valve cover / PCV assembly","Turbocharger","Mass airflow sensor","Throttle body"],
- interview:"Oil consumption has increased slightly.",
- inspection:"Whistling noise is strongest at the valve cover.",
- live:"Crankcase vacuum is excessive at idle.",
- testPass:"Smoke and vacuum testing confirm failure in the integrated PCV diaphragm.",
- scanHint:"P1101 on this engine often requires checking the PCV/intake system."
-},
-{
- vehicle:"2019 Jeep Wrangler • 3.6L V6",shape:"suv",complaint:"ABS and traction-control lights come on after I drive a few miles.",
- difficulty:"Medium",pay:660,diagFee:115,code:"C0035",codeDesc:"Left front wheel-speed sensor circuit",symptom:"Intermittent wheel-speed dropout.",system:"wiring",
- fault:"Left front wheel-speed sensor",partCost:92,
- parts:["Left front wheel-speed sensor","ABS module","Wheel bearing","Brake light switch"],
- interview:"The lights usually appear after hitting bumps.",
- inspection:"Sensor harness has a rub mark near the steering knuckle.",
- live:"Left-front wheel speed briefly drops to 0 while the other wheels remain normal.",
- testPass:"Sensor signal intermittently opens when the harness is flexed.",
- scanHint:"C0035 identifies the left-front wheel-speed circuit."
-},
-{
- vehicle:"2018 Nissan Altima • 2.5L",shape:"car",complaint:"It revs up but barely accelerates and sometimes goes into limp mode.",
- difficulty:"Hard",pay:980,diagFee:160,code:"P0776",codeDesc:"Pressure control solenoid B performance/stuck off",symptom:"CVT line pressure does not match command.",system:"transmission",
- fault:"CVT valve body / pressure solenoid",partCost:390,
- parts:["CVT valve body","Complete transmission","Throttle body","Transmission fluid service"],
- interview:"The problem is worse when the transmission is hot.",
- inspection:"Fluid level is correct but the fluid is dark.",
- live:"Commanded line pressure rises but actual pressure responds slowly.",
- testPass:"Pressure-control solenoid response is outside specification.",
- scanHint:"P0776 requires checking line-pressure control before condemning the whole transmission."
-},
-{
- vehicle:"2016 Subaru Outback • 2.5L",shape:"suv",complaint:"The steering wheel shakes and the front end clunks over bumps.",
- difficulty:"Easy",pay:560,diagFee:85,code:"CHASSIS",codeDesc:"No powertrain DTCs",symptom:"Loose front suspension component.",system:"suspension",
- fault:"Left front lower ball joint",partCost:72,
- parts:["Left front lower ball joint","Wheel bearing","Outer tie-rod end","Strut assembly"],
- interview:"The clunk is most noticeable over potholes at low speed.",
- inspection:"Left front wheel has vertical play; ball-joint boot is torn.",
- live:"No relevant scan data; this is a mechanical chassis diagnosis.",
- testPass:"Ball joint has excessive vertical movement under load.",
- scanHint:"No useful module code. Mechanical inspection is required."
-},
-{
- vehicle:"2022 Hyundai Santa Fe • 2.5L Turbo",shape:"suv",complaint:"It loses power on the highway and sometimes sets a boost warning.",
- difficulty:"Hard",pay:940,diagFee:155,code:"P0299",codeDesc:"Turbocharger underboost condition",symptom:"Boost pressure stays below commanded value.",system:"air",
- fault:"Charge-air cooler hose leak",partCost:105,
- parts:["Charge-air cooler hose","Turbocharger","Wastegate actuator","MAP sensor"],
- interview:"The issue began after recent service work.",
- inspection:"Oily mist is visible around the lower intercooler hose connection.",
- live:"Requested boost is 18 psi but actual boost peaks near 8 psi.",
- testPass:"Smoke test reveals a large leak at the charge-air cooler hose.",
- scanHint:"Underboost does not automatically mean the turbocharger is bad."
-},
-{
- vehicle:"2017 BMW 330i • 2.0L Turbo",shape:"car",complaint:"It has a rough idle and a drivetrain warning after warming up.",
- difficulty:"Hard",pay:1050,diagFee:175,code:"P0172",codeDesc:"System too rich",symptom:"Fuel trim strongly negative at idle.",system:"fuel",
- fault:"Leaking direct injector",partCost:265,
- parts:["Direct fuel injector","High-pressure fuel pump","Oxygen sensor","Ignition coil"],
- interview:"Customer says there is sometimes a fuel smell after shutdown.",
- inspection:"One spark plug is noticeably darker and wet.",
- live:"One cylinder correction is strongly negative; rail pressure is stable.",
- testPass:"Injector leakage test confirms one injector drips after shutdown.",
- scanHint:"A rich condition with stable rail pressure can come from a leaking injector."
-},
-{
- vehicle:"2020 Ford Transit • 3.5L EcoBoost",shape:"suv",complaint:"It has a coolant smell and temperature swings on long drives.",
- difficulty:"Medium",pay:790,diagFee:130,code:"P0128",codeDesc:"Coolant temperature below thermostat regulating temperature",symptom:"Thermostat does not regulate temperature correctly.",system:"cooling",
- fault:"Thermostat housing assembly",partCost:145,
- parts:["Thermostat housing assembly","Water pump","Radiator cap","Cylinder head gasket"],
- interview:"The heater sometimes blows cool air at idle.",
- inspection:"Minor coolant residue is visible around the thermostat housing.",
- live:"Coolant temperature rises slowly and fluctuates below expected regulation temperature.",
- testPass:"Pressure test reveals a small leak and thermostat control is erratic.",
- scanHint:"P0128 is a temperature-regulation code, not automatically an overheating code."
-},
-{
- vehicle:"2018 Chevrolet Equinox • 1.5L Turbo",shape:"suv",complaint:"The engine light is on and it feels weak climbing hills.",
- difficulty:"Medium",pay:720,diagFee:120,code:"P0101",codeDesc:"Mass air flow sensor range/performance",symptom:"Airflow calculation does not match expected load.",system:"air",
- fault:"Dirty / failed mass airflow sensor",partCost:115,
- parts:["Mass airflow sensor","Throttle body","Turbocharger","Oxygen sensor"],
- interview:"The air filter was replaced recently.",
- inspection:"Airbox is closed correctly; MAF sensing element is visibly contaminated.",
- live:"MAF grams/sec are lower than expected while boost and fuel pressure are normal.",
- testPass:"Known-good airflow signal restores fuel trim and power.",
- scanHint:"P0101 requires comparing measured airflow against engine load."
-},
-{
- vehicle:"2014 Dodge Charger • 3.6L V6",shape:"car",complaint:"It clicks when I try to start, but the lights stay bright.",
- difficulty:"Easy",pay:540,diagFee:85,code:"START",codeDesc:"No useful DTCs",symptom:"Starter solenoid clicks but motor does not crank.",system:"battery",
- fault:"Starter motor",partCost:170,
- parts:["Starter motor","Battery","Ignition switch","Alternator"],
- interview:"Jump-starting it does not make a difference.",
- inspection:"Battery terminals are clean and cables are tight.",
- live:"Battery voltage stays above 11V during the failed crank attempt.",
- testPass:"Starter receives full battery voltage and command but does not turn.",
- scanHint:"No module code. Starting-circuit voltage testing is required."
-},
-{
- vehicle:"2021 Ram 2500 • 6.7L Cummins",shape:"truck",complaint:"It says service DEF system and is counting down to a speed limit.",
- difficulty:"Hard",pay:1180,diagFee:180,code:"P20EE",codeDesc:"SCR NOx catalyst efficiency below threshold",symptom:"NOx conversion is poor despite normal DEF level.",system:"exhaust",
- fault:"Downstream NOx sensor",partCost:310,
- parts:["Downstream NOx sensor","SCR catalyst","DEF injector","DEF pump"],
- interview:"DEF fluid was recently filled with known-good fluid.",
- inspection:"No crystallized DEF leaks are visible.",
- live:"Upstream NOx responds normally; downstream sensor signal is implausibly fixed.",
- testPass:"Sensor plausibility test confirms the downstream NOx sensor is biased.",
- scanHint:"P20EE can be caused by sensor data errors, not just a failed SCR catalyst."
-},
-{
- vehicle:"2015 Toyota Camry • 2.5L",shape:"car",complaint:"The steering wheel is off-center and the car wanders after hitting a curb.",
- difficulty:"Easy",pay:520,diagFee:80,code:"CHASSIS",codeDesc:"No relevant DTCs",symptom:"Front toe is out of specification.",system:"suspension",
- fault:"Bent outer tie-rod end",partCost:78,
- parts:["Outer tie-rod end","Steering rack","Strut","Wheel bearing"],
- interview:"The problem started immediately after striking the curb.",
- inspection:"Right outer tie-rod end appears visibly bent.",
- live:"No useful scan data; alignment angles are mechanically incorrect.",
- testPass:"Toe measurement is far out and tie-rod geometry is visibly distorted.",
- scanHint:"This is a mechanical alignment problem."
-},
-{
- vehicle:"2019 Chevrolet Colorado • 2.8L Duramax",shape:"truck",complaint:"It has poor power and a whooshing noise under acceleration.",
- difficulty:"Medium",pay:850,diagFee:140,code:"P0299",codeDesc:"Turbo underboost",symptom:"Boost leak under load.",system:"air",
- fault:"Intercooler boot leak",partCost:95,
- parts:["Intercooler boot","Turbocharger","MAP sensor","EGR cooler"],
- interview:"Customer says the noise became obvious after towing a trailer.",
- inspection:"Oil mist is visible near an intercooler boot clamp.",
- live:"Boost command rises but actual boost remains low.",
- testPass:"Pressure/smoke test reveals the intercooler boot leaking.",
- scanHint:"Underboost should be checked for charge-air leaks before turbo replacement."
-},
-{
- vehicle:"2016 Lexus RX350 • 3.5L V6",shape:"suv",complaint:"The engine temperature rises and there is no heat from the vents sometimes.",
- difficulty:"Medium",pay:760,diagFee:125,code:"COOL",codeDesc:"Cooling system performance concern",symptom:"Coolant circulation is poor.",system:"cooling",
- fault:"Water pump",partCost:225,
- parts:["Water pump","Thermostat","Radiator","Heater core"],
- interview:"Customer hears a faint grinding sound from the belt side of the engine.",
- inspection:"Coolant seepage is visible near the water-pump area.",
- live:"Temperature rises quickly while heater-core outlet temperature stays low.",
- testPass:"Water-pump bearing has play and coolant flow is inadequate.",
- scanHint:"Cooling performance data suggests poor circulation rather than fan failure."
-},
-{
- vehicle:"2020 Kia Telluride • 3.8L V6",shape:"suv",complaint:"It vibrates when braking from highway speed.",
- difficulty:"Easy",pay:590,diagFee:90,code:"BRAKE",codeDesc:"No relevant DTCs",symptom:"Brake pulsation under moderate braking.",system:"brakes",
- fault:"Front brake rotors",partCost:155,
- parts:["Front brake rotors","Front brake pads","Wheel bearing","ABS sensor"],
- interview:"The vibration is felt mostly through the steering wheel.",
- inspection:"Front rotor surfaces show heat spots.",
- live:"No relevant scan data; wheel speeds remain equal.",
- testPass:"Rotor lateral runout exceeds specification.",
- scanHint:"A mechanical brake pulsation often has no scan code."
-}
-];
+<div class="modal" id="upgradeModal">
+  <div class="modal-card">
+    <button class="close">×</button><div class="eyebrow">PREMIUM MEMBERSHIP</div><h2>Unlock the Full Academy</h2>
+    <p>Production Version 3 will connect this screen to secure checkout. The button below unlocks premium only as a local demo.</p>
+    <div class="checklist">✓ All advanced lessons<br>✓ All service-call simulations<br>✓ Progress and badges<br>✓ HVAC + Electrical + Plumbing</div>
+    <button class="btn primary" id="demoUnlock">Demo Unlock Premium</button>
+  </div>
+</div>
 
-const achievements=[
- {id:"first",name:"First Day",desc:"Complete your first repair",check:s=>s.jobsDone>=1},
- {id:"five",name:"Getting Busy",desc:"Complete 5 repairs",check:s=>s.jobsDone>=5},
- {id:"ten",name:"Shop Regular",desc:"Complete 10 repairs",check:s=>s.jobsDone>=10},
- {id:"perfect3",name:"Three Perfect",desc:"Complete 3 perfect jobs",check:s=>s.perfectJobs>=3},
- {id:"streak5",name:"On a Roll",desc:"Reach a 5-job streak",check:s=>s.bestStreak>=5},
- {id:"cash5k",name:"Cash Flow",desc:"Hold $5,000 in shop cash",check:s=>s.cash>=5000},
- {id:"level5",name:"Master Technician",desc:"Reach shop level 5",check:s=>s.level>=5}
-];
-
-let state={
- cash:750,rep:0,jobsDone:0,level:1,streak:0,bestStreak:0,perfectJobs:0,mistakes:0,
- jobNumber:1,currentJob:-1,interviewed:false,inspected:false,scanned:false,liveViewed:false,
- tests:{},findings:[],selectedPart:null,repaired:false,finished:false,repairCorrect:false,
- diagSpent:0,partsSpent:0,wrongRepairs:0,upgrades:{scanner:0,tools:0,parts:0,ads:0,bay:0},
- achievements:{}
-};
-let job=null;
-
-const $=id=>document.getElementById(id);
-
-function showScreen(name){
- document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
- document.querySelectorAll(".navtabs button").forEach(x=>x.classList.remove("active"));
- $("screen"+name.charAt(0).toUpperCase()+name.slice(1)).classList.add("active");
- const map={job:"tabJob",shop:"tabShop",stats:"tabStats",logscreen:"tabLog"};
- $(map[name]).classList.add("active");
- window.scrollTo({top:0,behavior:"smooth"});
-}
-function toast(t){$("toast").textContent=t;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),1700)}
-function status(t,type=""){$("status").textContent=t;$("status").className="status "+type}
-function addLog(t){$("log").innerHTML+="&gt; "+t+"<br>";$("log").scrollTop=$("log").scrollHeight}
-function addFinding(text,type="info"){
- if(state.findings.some(f=>f.text===text))return;
- state.findings.push({text,type});renderFindings();
-}
-function renderFindings(){
- const el=$("findings");
- if(!state.findings.length){el.innerHTML='<div class="finding info">No diagnostic findings yet.</div>';return}
- el.innerHTML=state.findings.map(f=>`<div class="finding ${f.type}">${f.text}</div>`).join("");
-}
-function updateLevel(){
- state.level=1+Math.floor(state.rep/5);
- state.bestStreak=Math.max(state.bestStreak,state.streak);
-}
-function testCost(type){
- let c=TEST_COSTS[type]||25;
- c-=state.upgrades.tools*2;
- if(type==="scan")c-=state.upgrades.scanner*4;
- return Math.max(5,c);
-}
-function partCost(){
- return Math.max(10,Math.round(job.partCost*(1-state.upgrades.parts*.06)));
-}
-function customerPay(){
- let bonus=state.upgrades.ads*30 + state.upgrades.bay*35;
- return job.pay+bonus;
-}
-function charge(type){
- const c=testCost(type);
- state.cash-=c;state.diagSpent+=c;render();return c;
-}
-function starText(){
- let score=5-state.wrongRepairs-Math.floor(state.diagSpent/140);
- score=Math.max(1,Math.min(5,score));
- return "⭐".repeat(score)+"☆".repeat(5-score);
-}
-function difficultyClass(){
- return job.difficulty==="Easy"?"easy":job.difficulty==="Medium"?"med":"hard";
-}
-function renderVehicle(){
- const vb=$("vehicleBody");
- vb.className=(job.shape==="truck"?"car truck":job.shape==="suv"?"car suv":"car");
- $("smoke").style.display=(job.system==="exhaust"||job.system==="air")?"block":"none";
- $("warning").style.display=(job.difficulty==="Hard")?"block":"none";
-}
-function renderParts(){
- $("partsList").innerHTML=job.parts.map(p=>`<button class="partbtn ${state.selectedPart===p?"selected":""}" onclick='selectPart(${JSON.stringify(p)})'>${p}</button>`).join("");
- $("selectedPartText").textContent=state.selectedPart?`Selected repair: ${state.selectedPart}`:"No repair selected.";
-}
-function renderAchievements(){
- $("achievements").innerHTML=achievements.map(a=>{
-   const done=!!state.achievements[a.id];
-   return `<div class="finding ${done?"good":"info"}"><b>${done?"✅":"⬜"} ${a.name}</b><br><span class="small muted">${a.desc}</span></div>`;
- }).join("");
-}
-function renderUnlocks(){
- const unlocks=[
-  ["Level 2","More medium-difficulty jobs"],
-  ["Level 3","Hard diagnostic jobs"],
-  ["Level 4","Higher-paying fleet and diesel work"],
-  ["Level 5","Master Technician status"]
- ];
- $("unlocks").innerHTML=unlocks.map(([l,d])=>`<div class="finding ${state.level>=Number(l.split(" ")[1])?"good":"info"}"><b>${l}</b> — ${d}</div>`).join("");
-}
-function render(){
- updateLevel();
- if(!job)return;
- $("cash").textContent=Math.round(state.cash);
- $("levelTop").textContent=state.level;$("level").textContent=state.level;
- $("rep").textContent=state.rep;$("jobsDone").textContent=state.jobsDone;$("streak").textContent=state.streak;
- $("perfectJobs").textContent=state.perfectJobs;$("mistakes").textContent=state.mistakes;
- $("jobNo").textContent="WORK ORDER #"+String(state.jobNumber).padStart(3,"0");
- $("vehicleName").textContent=job.vehicle;$("complaint").textContent=job.complaint;
- $("difficultyBadge").textContent="Difficulty: "+job.difficulty;
- $("difficultyBadge").className="badge "+difficultyClass();
- $("invoice").textContent=customerPay();$("diagFee").textContent=job.diagFee;
- $("stars").textContent=starText();
- $("diagCost").textContent=Math.round(state.diagSpent);$("partsCost").textContent=Math.round(state.partsSpent);
- $("projectedPay").textContent=customerPay();
- const pr=customerPay()+job.diagFee-state.diagSpent-state.partsSpent;
- $("profit").textContent=(pr>=0?"$":"-$")+Math.abs(Math.round(pr));$("profit").style.color=pr>=0?"#72d68f":"#ef7b7b";
- const levelProgress=(state.rep%5)/5*100;$("levelProgress").style.width=levelProgress+"%";
- for(const [id,key] of [["scanLvl","scanner"],["toolsLvl","tools"],["partsLvl","parts"],["adsLvl","ads"],["bayLvl","bay"]])$(id).textContent=state.upgrades[key];
- const bases={scanner:800,tools:950,parts:1200,ads:1400,bay:2000},steps={scanner:550,tools:650,parts:750,ads:900,bay:1200};
- for(const [id,key] of [["scanPrice","scanner"],["toolsPrice","tools"],["partsPrice","parts"],["adsPrice","ads"],["bayPrice","bay"]])$(id).textContent=bases[key]+state.upgrades[key]*steps[key];
- renderFindings();renderParts();renderAchievements();renderUnlocks();renderVehicle();
-}
-function allowedJobIndices(){
- return jobs.map((j,i)=>({j,i})).filter(x=>{
-   if(state.level<2 && x.j.difficulty!=="Easy")return false;
-   if(state.level<3 && x.j.difficulty==="Hard")return false;
-   return true;
- }).map(x=>x.i);
-}
-function chooseNewJob(first=false){
- const pool=allowedJobIndices();
- let idx;
- do{idx=pool[Math.floor(Math.random()*pool.length)]}while(idx===state.currentJob && pool.length>1);
- state.currentJob=idx;job=jobs[idx];
- state.interviewed=false;state.inspected=false;state.scanned=false;state.liveViewed=false;state.tests={};state.findings=[];
- state.selectedPart=null;state.repaired=false;state.finished=false;state.repairCorrect=false;state.diagSpent=0;state.partsSpent=0;state.wrongRepairs=0;
- if(!first)state.jobNumber++;
- render();status("Start by talking to the customer and inspecting the vehicle.");addLog("--- "+job.vehicle+" arrived ---");saveGame();
-}
-function customerInterview(){
- if(state.interviewed){status("You already interviewed the customer.");return}
- const c=charge("interview");state.interviewed=true;
- addFinding("Customer interview: "+job.interview,"info");
- status("Interview complete. Use the symptom pattern to plan your next step.","info");
- addLog("Customer interview (-$"+c+"): "+job.interview);saveGame();
-}
-function inspectVehicle(){
- if(state.inspected){status("Visual inspection already completed.");return}
- const c=charge("inspect");state.inspected=true;
- addFinding("Visual inspection: "+job.inspection,"info");
- status("Inspection complete. Decide whether to scan modules or perform a targeted test.","info");
- addLog("Inspection (-$"+c+"): "+job.inspection);saveGame();
-}
-function scanVehicle(){
- if(!state.inspected){status("Perform a visual inspection before scanning.","bad");return}
- if(state.scanned){status("Modules already scanned: "+job.code);return}
- const c=charge("scan");state.scanned=true;
- let txt=`Scan result: ${job.code} — ${job.codeDesc}.`;
- if(state.upgrades.scanner>=1)txt+=" "+job.scanHint;
- if(state.upgrades.scanner>=2)txt+=" Freeze-frame data matches the customer complaint.";
- if(state.upgrades.scanner>=3)txt+=" Suggested system to test: "+job.system.toUpperCase()+".";
- addFinding(txt,"info");status(txt,"good");addLog("Module scan (-$"+c+"): "+job.code+" — "+job.codeDesc);saveGame();
-}
-function viewLiveData(){
- if(!state.scanned){status("Scan modules before viewing live data.","bad");return}
- if(state.liveViewed){status("Live data has already been reviewed.");return}
- const c=charge("livedata");state.liveViewed=true;
- let txt="Live data: "+job.live;
- if(state.upgrades.scanner>=2)txt+=" Pattern confidence: high.";
- addFinding(txt,"info");status(txt,"good");addLog("Live data (-$"+c+"): "+job.live);saveGame();
-}
-function runTest(type){
- if(!state.inspected){status("Inspect the vehicle before testing systems.","bad");return}
- if(state.tests[type]){status("That system has already been tested.");return}
- const c=charge(type);state.tests[type]=true;
- if(type===job.system){
-   let txt="CONFIRMED: "+job.testPass+" Failed component: "+job.fault+".";
-   if(state.upgrades.tools>=2)txt+=" Measurement confidence is excellent.";
-   addFinding(txt,"bad");status("Failed component confirmed: "+job.fault+".","good");
-   addLog(type.toUpperCase()+" test (-$"+c+"): FAILED — "+job.fault+" confirmed.");
- }else{
-   const pass={
-    battery:"Battery, cables and charging measurements are within specification.",
-    ignition:"Ignition output and misfire testing pass for the suspected cylinders.",
-    fuel:"Fuel pressure, injector balance and delivery pass.",
-    air:"Smoke and intake-air testing show no relevant leaks.",
-    wiring:"Power, ground, resistance and sensor-signal checks pass.",
-    brakes:"Hydraulic, ABS and mechanical brake checks pass.",
-    cooling:"Cooling pressure, fan command and circulation checks pass.",
-    exhaust:"Exhaust restriction and aftertreatment data pass.",
-    transmission:"Transmission pressures and speed-sensor data do not show the customer fault.",
-    suspension:"Steering and suspension checks do not reveal the complaint."
-   };
-   addFinding(pass[type]||"System test passed.","good");status(pass[type]||"System test passed.");
-   addLog(type.toUpperCase()+" test (-$"+c+"): PASS.");
- }
- saveGame();
-}
-function selectPart(p){state.selectedPart=p;renderParts()}
-function performRepair(){
- if(state.finished){status("This job is already complete.","good");return}
- if(!state.selectedPart){status("Choose a repair first.","bad");return}
- if(state.repaired&&state.repairCorrect){status("Correct repair is already installed.");return}
- const correct=state.selectedPart===job.fault || (job.fault==="Restricted DPF"&&state.selectedPart==="DPF cleaning/service");
- const base=correct?partCost():Math.max(50,Math.round(partCost()*.75));
- if(state.cash<base){status("Not enough shop cash to buy this repair.","bad");return}
- state.cash-=base;state.partsSpent+=base;state.repaired=true;
- if(correct){
-   state.repairCorrect=true;status("Repair installed. Now verify the repair with a road test.","good");
-   addFinding("Repair performed: "+state.selectedPart+".","good");addLog("Correct repair installed (-$"+base+"): "+state.selectedPart);
- }else{
-   state.repairCorrect=false;state.wrongRepairs++;state.mistakes++;state.rep=Math.max(0,state.rep-1);state.streak=0;
-   status("That repair did NOT fix the vehicle. Continue diagnosing.","bad");
-   addFinding("Wrong repair: "+state.selectedPart+" did not correct the fault.","bad");addLog("MISDIAGNOSIS (-$"+base+"): "+state.selectedPart+" did not fix the concern.");
- }
- render();saveGame();
-}
-function verifyRepair(){
- if(!state.repaired){status("Perform a repair before verification.","bad");return}
- if(!state.repairCorrect){status("Verification failed. The original fault is still present.","bad");addLog("Verification FAILED.");return}
- if(state.finished){status("Job already completed.","good");return}
- state.finished=true;
- const pay=customerPay()+job.diagFee;
- state.cash+=pay;state.rep+=2;state.jobsDone++;state.streak++;state.bestStreak=Math.max(state.bestStreak,state.streak);
- const perfect=(state.wrongRepairs===0 && state.diagSpent<=120);
- if(perfect){state.perfectJobs++;state.rep+=1}
- const streakBonus=state.streak>=3?state.streak*30:0;
- if(streakBonus)state.cash+=streakBonus;
- const bayBonus=state.upgrades.bay*35;if(bayBonus)state.cash+=bayBonus;
- updateLevel();checkAchievements();
- const actualProfit=pay+streakBonus+bayBonus-state.diagSpent-state.partsSpent;
- $("resultTitle").textContent="✅ Repair Complete";
- $("resultBody").innerHTML=`
-   <p><b>${job.vehicle}</b></p>
-   <p>Customer payment: <b>$${pay}</b></p>
-   <p>Job profit: <b style="color:${actualProfit>=0?'#72d68f':'#ef7b7b'}">$${Math.round(actualProfit)}</b></p>
-   <p>Customer rating: <b>${starText()}</b></p>
-   <p>Reputation earned: <b>+${perfect?3:2}</b>${perfect?" — Perfect diagnosis bonus!":""}</p>
-   ${streakBonus?`<p>Win-streak bonus: <b>+$${streakBonus}</b></p>`:""}
- `;
- $("resultModal").classList.add("show");
- status("Repair verified. Customer paid the invoice.","good");addLog("JOB COMPLETE: +$"+pay+" payment. Profit $"+Math.round(actualProfit)+".");render();saveGame();
-}
-function closeModal(){$("resultModal").classList.remove("show")}
-function nextCustomer(){
- if(!state.finished){status("Finish and verify this repair before taking another customer.","bad");return}
- closeModal();chooseNewJob(false);showScreen("job");
-}
-function buyUpgrade(type){
- const max=type==="bay"?3:4;
- if(state.upgrades[type]>=max){toast("Maximum upgrade reached");return}
- const base={scanner:800,tools:950,parts:1200,ads:1400,bay:2000}[type];
- const step={scanner:550,tools:650,parts:750,ads:900,bay:1200}[type];
- const price=base+state.upgrades[type]*step;
- if(state.cash<price){toast("Not enough shop cash");return}
- state.cash-=price;state.upgrades[type]++;addLog(type.toUpperCase()+" upgrade purchased (-$"+price+").");render();saveGame();toast("Upgrade purchased");
-}
-function checkAchievements(){
- achievements.forEach(a=>{
-   if(!state.achievements[a.id]&&a.check(state)){state.achievements[a.id]=true;toast("Achievement: "+a.name);addLog("ACHIEVEMENT UNLOCKED: "+a.name)}
- });
-}
-function saveGame(show=false){
- localStorage.setItem("mechanicShopCareerV4",JSON.stringify(state));
- if(show){toast("Game saved");addLog("Game manually saved.")}
-}
-function loadGame(show=false){
- const raw=localStorage.getItem("mechanicShopCareerV4");
- if(!raw){if(show)toast("No saved career found");return false}
- try{
-   const incoming=JSON.parse(raw);
-   state=Object.assign(state,incoming);
-   state.upgrades=Object.assign({scanner:0,tools:0,parts:0,ads:0,bay:0},state.upgrades||{});
-   state.achievements=Object.assign({},state.achievements||{});
-   if(state.currentJob<0||!jobs[state.currentJob])state.currentJob=0;
-   job=jobs[state.currentJob];
-   render();
-   if(show){toast("Career loaded");addLog("Saved career loaded.")}
-   return true;
- }catch(e){if(show)toast("Save could not be loaded");return false}
-}
-function resetGame(){
- if(!confirm("Reset all Mechanic Shop career progress on this device?"))return;
- localStorage.removeItem("mechanicShopCareerV4");location.reload();
-}
-
-// Start
-if(!loadGame(false)){
- chooseNewJob(true);
-}else{
- addLog("Shop opened. Saved work order restored.");
-}
-render();
-</script>
-</body>
-</html>
+<footer><div class="brand"><div class="brandmark">TW</div><div><strong>TRADEWORKS</strong><span>ACADEMY</span></div></div><p>Real Skills. Real Careers. Real Impact.</p><small>V3 prototype: real accounts, payments, production student records, certificates, and institutional reporting require a secure backend.</small></footer>
+<script src="app.js"></script>
+</body></html>
