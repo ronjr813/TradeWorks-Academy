@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071729">
+<title>TradeWorks Academy V4</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#home"><div class="brandmark">TW</div><div><strong>TRADEWORKS</strong><span>ACADEMY</span></div></a>
+  <button id="menuBtn" class="menu">☰</button>
+  <nav id="nav">
+    <a href="#home">Home</a>
+    <a href="#assessment">Find My Trade</a>
+    <a href="#results">My Results</a>
+    <a href="#academies">Try the Trades</a>
+    <a href="#dashboard">Dashboard</a>
+  </nav>
+</header>
+
+<main>
+<section id="home" class="hero section">
+  <div class="hero-copy">
+    <div class="eyebrow">VERSION 4 • CAREER EXPLORATION PLATFORM</div>
+    <h1>FIND A CAREER<br><span>THAT FITS YOU.</span></h1>
+    <p>TradeWorks Academy helps students and adults explore HVAC, Electrical, and Plumbing before committing time or money to a career path.</p>
+    <div class="actions">
+      <a class="btn primary" href="#assessment">Take the Free Assessment</a>
+      <a class="btn secondary" href="#academies">Try a Trade First</a>
+    </div>
+    <div class="mission-note"><b>TradeWorks does not choose a career for you.</b> It helps you experience the work, compare your interests, and make a more informed decision.</div>
+  </div>
+  <div class="hero-card">
+    <div class="result-preview">
+      <div class="preview-label">SAMPLE CAREER MATCH</div>
+      <h3>HVAC Service Technician</h3>
+      <div class="score-ring"><b>91%</b><span>Match</span></div>
+      <div class="preview-bars">
+        <div><span>HVAC</span><i style="width:91%"></i><b>91%</b></div>
+        <div><span>Electrical</span><i style="width:82%"></i><b>82%</b></div>
+        <div><span>Plumbing</span><i style="width:68%"></i><b>68%</b></div>
+      </div>
+      <p>Recommended next step: try a simulated no-cooling service call.</p>
+    </div>
+  </div>
+</section>
+
+<section class="strip">
+  <div><b>FREE</b><span>Career assessment</span></div>
+  <div><b>3</b><span>Trade experiences</span></div>
+  <div><b>PERSONAL</b><span>Career-match results</span></div>
+  <div><b>NO PRESSURE</b><span>Explore before deciding</span></div>
+</section>
+
+<section id="assessment" class="section">
+  <div class="section-head">
+    <div class="eyebrow">FIND MY TRADE</div>
+    <h2>What kind of work fits you?</h2>
+    <p>Answer 18 questions about what you enjoy, how you like to work, and what kind of career environment interests you.</p>
+  </div>
+
+  <div class="assessment-grid">
+    <div class="quiz-card">
+      <div class="quiz-progress"><i id="assessmentProgress"></i></div>
+      <div id="assessmentBox"></div>
+    </div>
+    <aside class="assessment-side">
+      <div class="side-icon">🧭</div>
+      <h3>This is not a pass/fail test.</h3>
+      <p>There are no “right” answers. The goal is to compare your preferences with common characteristics of HVAC, Electrical, and Plumbing work.</p>
+      <div class="side-tags"><span>Hands-on work</span><span>Troubleshooting</span><span>Customer interaction</span><span>Work environment</span><span>Business interest</span></div>
+    </aside>
+  </div>
+</section>
+
+<section id="results" class="section alt">
+  <div class="section-head">
+    <div class="eyebrow">YOUR CAREER MATCH</div>
+    <h2>Your results.</h2>
+    <p>Your latest assessment results will appear here. You can retake the assessment anytime.</p>
+  </div>
+  <div id="resultsPanel" class="results-panel empty">
+    <div class="empty-state">
+      <div>🎯</div><h3>No assessment completed yet</h3><p>Take the free assessment above to see your trade matches.</p><a class="btn primary" href="#assessment">Start Assessment</a>
+    </div>
+  </div>
+</section>
+
+<section id="academies" class="section">
+  <div class="section-head">
+    <div class="eyebrow">EXPERIENCE THE WORK</div>
+    <h2>Try the trade before choosing it.</h2>
+    <p>Career results are only a starting point. The best way to learn whether a trade interests you is to experience how technicians actually think.</p>
+  </div>
+  <div class="academy-grid">
+    <article>
+      <div class="icon">❄️</div><small>HVAC EXPERIENCE</small><h3>No Cooling</h3>
+      <p>Work through a simplified HVAC service call using thermostat, control-voltage, and contactor information.</p>
+      <button class="btn primary experience" data-trade="HVAC">Try HVAC</button>
+    </article>
+    <article>
+      <div class="icon">⚡</div><small>ELECTRICAL EXPERIENCE</small><h3>Dead Circuit</h3>
+      <p>Follow a residential troubleshooting sequence and decide where to test after verifying source voltage.</p>
+      <button class="btn primary experience" data-trade="Electrical">Try Electrical</button>
+    </article>
+    <article>
+      <div class="icon">🔧</div><small>PLUMBING EXPERIENCE</small><h3>Low Pressure</h3>
+      <p>Compare whole-house versus single-fixture symptoms and choose the most useful next inspection.</p>
+      <button class="btn primary experience" data-trade="Plumbing">Try Plumbing</button>
+    </article>
+  </div>
+</section>
+
+<section id="dashboard" class="section alt">
+  <div class="section-head"><div class="eyebrow">MY EXPLORATION RECORD</div><h2>Your dashboard.</h2><p>Keep track of assessment results and trade experiences completed on this device.</p></div>
+  <div class="dashboard">
+    <aside class="student-panel">
+      <div class="avatar">ST</div><span>EXPLORER</span><h3 id="studentName">Future Trades Professional</h3>
+      <p id="studentGoal">Exploring career options</p>
+      <button class="sidebtn" id="profileBtn">Set Profile</button>
+    </aside>
+    <div class="dashboard-main">
+      <div class="stats">
+        <div><b id="assessmentDone">No</b><span>Assessment completed</span></div>
+        <div><b id="experiencesDone">0</b><span>Trade experiences tried</span></div>
+        <div><b id="topMatch">—</b><span>Current top match</span></div>
+      </div>
+      <div class="explore-progress">
+        <div><span>HVAC experience</span><b id="hvacDone">Not tried</b></div>
+        <div><span>Electrical experience</span><b id="elecDone">Not tried</b></div>
+        <div><span>Plumbing experience</span><b id="plumbDone">Not tried</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head"><div class="eyebrow">IF YOU WANT TO GO FURTHER</div><h2>Explore. Decide. Then train.</h2><p>TradeWorks can offer deeper training after someone decides a trade is worth pursuing, but the first purpose is helping them make that decision.</p></div>
+  <div class="next-grid">
+    <article><b>1</b><h3>Explore</h3><p>Take the career assessment and learn what each trade is actually like.</p></article>
+    <article><b>2</b><h3>Experience</h3><p>Try realistic service-call and troubleshooting activities.</p></article>
+    <article><b>3</b><h3>Decide</h3><p>Compare interest, comfort, training routes, and lifestyle fit.</p></article>
+    <article><b>4</b><h3>Train</h3><p>If the trade still interests you, move into deeper learning or a real-world school/apprenticeship path.</p></article>
+  </div>
+</section>
+</main>
+
+<div class="modal" id="profileModal">
+  <div class="modal-card">
+    <button class="close">×</button><div class="eyebrow">EXPLORER PROFILE</div><h2>Tell us a little about your goal</h2>
+    <label>Name<input id="nameInput" placeholder="Your name"></label>
+    <label>Current goal<select id="goalInput"><option>Exploring career options</option><option>Considering trade school</option><option>Considering an apprenticeship</option><option>Considering a career change</option><option>Helping someone explore careers</option></select></label>
+    <button class="btn primary" id="saveProfile">Save Profile</button>
+  </div>
+</div>
+
+<div class="modal" id="experienceModal">
+  <div class="modal-card wide"><button class="close">×</button><div id="experienceView"></div></div>
+</div>
+
+<footer>
+  <div class="brand"><div class="brandmark">TW</div><div><strong>TRADEWORKS</strong><span>ACADEMY</span></div></div>
+  <p>Explore the work. Understand your options. Make your own decision.</p>
+  <small>TradeWorks Academy is a career-exploration tool and does not replace accredited trade school, apprenticeship, licensing, or employer training.</small>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
