@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#071827" />
+  <meta name="description" content="TradeWorks Academy - hands-on HVAC, Electrical, and Plumbing training." />
+  <title>TradeWorks Academy - Version 5</title>
+  <style>
+    :root{
+      --bg:#071827;
+      --panel:#102b46;
+      --panel2:#0c2138;
+      --line:#315777;
+      --text:#eef6ff;
+      --muted:#b8c6d6;
+      --blue:#58a8eb;
+      --blue2:#83c4ff;
+      --green:#57c785;
+      --warn:#ffca5c;
+      --danger:#ff7b7b;
+      --radius:20px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.45;
+    }
+    button,input,select{font:inherit}
+    button{cursor:pointer}
+    .wrap{max-width:820px;margin:0 auto;padding:0 20px 70px}
+    header{
+      position:sticky;top:0;z-index:20;
+      background:rgba(7,24,39,.96);
+      border-bottom:1px solid #1d3d59;
+      backdrop-filter:blur(12px);
+    }
+    .head{
+      max-width:820px;margin:0 auto;padding:16px 20px;
+      display:flex;align-items:center;justify-content:space-between;gap:14px;
+    }
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{
+      width:58px;height:58px;border:4px solid var(--blue);
+      border-radius:18px;display:grid;place-items:center;
+      font-weight:900;font-size:24px;color:var(--blue2);
+      box-shadow:0 0 20px rgba(88,168,235,.15);
+    }
+    .brand-name{font-size:21px;font-weight:900;letter-spacing:.5px}
+    .brand-sub{font-size:12px;letter-spacing:5px;color:#8fa7c0;font-weight:700}
+    .menu{
+      border:0;background:transparent;color:white;font-size:30px;padding:8px 10px;
+    }
+    .hero{padding:72px 0 42px}
+    .eyebrow{
+      color:var(--blue2);font-weight:900;letter-spacing:5px;
+      text-transform:uppercase;font-size:14px;margin-bottom:20px;
+    }
+    h1{
+      font-size:clamp(48px,10vw,78px);line-height:.98;margin:0 0 26px;
+      letter-spacing:-2px;
+    }
+    h1 .blue{color:var(--blue)}
+    .hero p{font-size:clamp(22px,4vw,32px);color:var(--muted);margin:0 0 32px}
+    .btn{
+      display:block;width:100%;border:0;border-radius:18px;
+      padding:20px 22px;font-weight:900;font-size:22px;margin:14px 0;
+      color:white;background:var(--blue);
+    }
+    .btn.secondary{background:#18344f;border:2px solid #315777}
+    .btn.small{display:inline-block;width:auto;font-size:17px;padding:13px 18px;margin:6px 6px 6px 0}
+    .btn.green{background:var(--green);color:#082014}
+    .btn.warn{background:var(--warn);color:#2b2208}
+    .panel{
+      background:var(--panel);border:1.5px solid #315777;border-radius:var(--radius);
+      padding:24px;margin:26px 0;
+    }
+    .section-title{
+      color:var(--blue2);font-size:16px;letter-spacing:4px;
+      font-weight:900;text-transform:uppercase;margin:0 0 14px;
+    }
+    .record{display:flex;gap:18px;align-items:center}
+    .avatar{
+      width:92px;height:92px;border-radius:50%;display:grid;place-items:center;
+      background:#2c7399;font-size:34px;font-weight:900;color:#c9d6df;flex:0 0 auto
+    }
+    .record h3{color:var(--blue);font-size:24px;margin:0 0 6px}
+    .muted{color:var(--muted)}
+    .academies{padding-top:25px}
+    .academy-card{
+      background:var(--panel2);border:1.5px solid #315777;border-radius:22px;
+      padding:28px;margin:20px 0;
+    }
+    .academy-card h3{font-size:38px;margin:0 0 18px}
+    .academy-card p{font-size:22px;color:var(--text);margin:0 0 22px}
+    .academy-card .btn{width:auto;display:inline-block;padding:18px 30px}
+    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .service-choice{
+      background:#15304b;color:white;border:1px solid #365f82;
+      border-radius:14px;padding:16px 10px;font-weight:800;
+    }
+    .status{
+      margin-top:16px;padding:16px;border-radius:14px;background:#0a2035;color:var(--muted)
+    }
+    .screen{display:none;padding-top:28px}
+    .screen.active{display:block}
+    .back{
+      background:transparent;border:1px solid #315777;color:var(--blue2);
+      padding:12px 16px;border-radius:12px;font-weight:800;margin-bottom:20px
+    }
+    .lesson{
+      background:#0d243b;border:1px solid #315777;border-radius:16px;padding:18px;margin:14px 0
+    }
+    .lesson h4{font-size:22px;margin:0 0 8px}
+    .lesson p{color:var(--muted);margin:0 0 14px}
+    .progress{
+      height:14px;background:#071827;border-radius:999px;overflow:hidden;border:1px solid #294e6d;margin:12px 0
+    }
+    .progress > span{display:block;height:100%;background:var(--blue);width:0%}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#153b5b;color:var(--blue2);font-weight:800;font-size:13px}
+    .hidden{display:none!important}
+    footer{color:#71879d;text-align:center;padding:40px 0 10px}
+    @media(max-width:560px){
+      .wrap{padding-left:18px;padding-right:18px}
+      .hero{padding-top:52px}
+      .brand-name{font-size:18px}
+      .logo{width:54px;height:54px}
+      .service-grid{grid-template-columns:1fr}
+      .record{align-items:flex-start}
+      .academy-card h3{font-size:34px}
+      .academy-card p{font-size:20px}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="head">
+    <div class="brand">
+      <div class="logo">TW</div>
+      <div>
+        <div class="brand-name">TRADEWORKS</div>
+        <div class="brand-sub">ACADEMY</div>
+      </div>
+    </div>
+    <button class="menu" onclick="document.getElementById('academies').scrollIntoView()">☰</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="home" class="screen active">
+    <div class="hero">
+      <div class="eyebrow">TradeWorks Academy • Version 5</div>
+      <h1>LEARN THE<br>TRADE.<br><span class="blue">DO THE WORK.</span></h1>
+      <p>Choose HVAC, Electrical, or Plumbing. Complete lessons, pass knowledge checks, solve service calls, earn TradePoints, and build a training record.</p>
+      <button class="btn" onclick="document.getElementById('academies').scrollIntoView()">Start Training</button>
+      <button class="btn secondary" onclick="document.getElementById('academies').scrollIntoView()">Explore Academies</button>
+    </div>
+
+    <div class="panel">
+      <div class="section-title">Student Training Record</div>
+      <div class="record">
+        <div class="avatar">ST</div>
+        <div style="flex:1">
+          <h3>APPRENTICE LEVEL 1</h3>
+          <div class="muted" id="recordText">0 TradePoints • 0 lessons complete</div>
+          <div class="progress"><span id="overallProgress"></span></div>
+          <div class="muted">Next: Safety, Tools & PPE</div>
+        </div>
+      </div>
+    </div>
+
+    <section id="academies" class="academies">
+      <div class="section-title">Choose Your Academy</div>
+      <p class="muted" style="font-size:22px">Each academy combines core lessons with practical service-call scenarios.</p>
+
+      <div class="academy-card">
+        <h3>❄️ HVAC</h3>
+        <p>Heating, cooling, airflow, refrigeration and diagnostics.</p>
+        <button class="btn" onclick="openAcademy('hvac')">Enter HVAC</button>
+      </div>
+
+      <div class="academy-card">
+        <h3>⚡ Electrical</h3>
+        <p>Safety, circuits, meters, devices, motors and troubleshooting.</p>
+        <button class="btn" onclick="openAcademy('electrical')">Enter Electrical</button>
+      </div>
+
+      <div class="academy-card">
+        <h3>🔧 Plumbing</h3>
+        <p>Water systems, drainage, fixtures, piping and service diagnosis.</p>
+        <button class="btn" onclick="openAcademy('plumbing')">Enter Plumbing</button>
+      </div>
+    </section>
+
+    <div class="panel">
+      <div class="section-title">Service-Call Challenge</div>
+      <h2 style="margin-top:0">Quick Diagnostic</h2>
+      <p class="muted">A customer says the air conditioner is running, but the house is not cooling. What should you check first?</p>
+      <div class="service-grid">
+        <button class="service-choice" onclick="serviceAnswer(false)">Replace compressor</button>
+        <button class="service-choice" onclick="serviceAnswer(true)">Check filter & airflow</button>
+        <button class="service-choice" onclick="serviceAnswer(false)">Add refrigerant immediately</button>
+      </div>
+      <div class="status" id="serviceStatus">Choose an answer.</div>
+    </div>
+  </section>
+
+  <section id="academyScreen" class="screen">
+    <button class="back" onclick="goHome()">← Back to Academies</button>
+    <div class="section-title" id="academyEyebrow">Academy</div>
+    <h2 id="academyTitle" style="font-size:42px;margin:0 0 8px"></h2>
+    <p class="muted" id="academyDescription" style="font-size:21px"></p>
+    <div class="panel">
+      <div style="display:flex;justify-content:space-between;gap:12px;align-items:center">
+        <strong>Academy Progress</strong>
+        <span class="pill" id="academyProgressText">0 / 3 complete</span>
+      </div>
+      <div class="progress"><span id="academyProgress"></span></div>
+    </div>
+    <div id="lessonList"></div>
+  </section>
+</main>
+
+<footer>TradeWorks Academy • Version 5 Clean Single-File Build</footer>
+
+<script>
+const academyData = {
+  hvac: {
+    title: "❄️ HVAC Academy",
+    description: "Build a foundation in HVAC safety, airflow, refrigeration, electrical diagnosis, and real service-call thinking.",
+    lessons: [
+      ["Safety, Tools & PPE","Identify core jobsite hazards, personal protective equipment, and safe tool practices."],
+      ["Airflow & Temperature Split","Learn why airflow comes first and how to use supply/return temperatures as a diagnostic clue."],
+      ["Basic Refrigeration Cycle","Understand evaporator, compressor, condenser and metering-device operation."]
+    ]
+  },
+  electrical: {
+    title: "⚡ Electrical Academy",
+    description: "Learn safe electrical work, circuit fundamentals, meter use, common devices and troubleshooting.",
+    lessons: [
+      ["Electrical Safety","Lockout/tagout, shock hazards and safe work practices."],
+      ["Using a Multimeter","Voltage, resistance and continuity basics."],
+      ["Circuits & Loads","Understand series/parallel concepts and common load problems."]
+    ]
+  },
+  plumbing: {
+    title: "🔧 Plumbing Academy",
+    description: "Learn water supply, drainage, fixtures, piping systems and service diagnosis.",
+    lessons: [
+      ["Plumbing Safety & Tools","Basic tools, PPE and safe work habits."],
+      ["Water Supply Systems","Pressure, valves, supply piping and common restrictions."],
+      ["Drainage & Venting","Flow, traps, vents and common blockage symptoms."]
+    ]
+  }
+};
+
+let currentAcademy = null;
+let state = JSON.parse(localStorage.getItem("tradeworks_v5_progress") || '{"points":0,"done":{}}');
+
+function saveState(){
+  localStorage.setItem("tradeworks_v5_progress", JSON.stringify(state));
+  updateRecord();
+}
+function keyFor(a,i){ return a+"_"+i; }
+
+function openAcademy(name){
+  currentAcademy=name;
+  document.getElementById("home").classList.remove("active");
+  document.getElementById("academyScreen").classList.add("active");
+  const a=academyData[name];
+  document.getElementById("academyEyebrow").textContent=name.toUpperCase()+" • TRAINING";
+  document.getElementById("academyTitle").textContent=a.title;
+  document.getElementById("academyDescription").textContent=a.description;
+  renderLessons();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function goHome(){
+  document.getElementById("academyScreen").classList.remove("active");
+  document.getElementById("home").classList.add("active");
+  setTimeout(()=>document.getElementById("academies").scrollIntoView(),50);
+}
+
+function renderLessons(){
+  const a=academyData[currentAcademy];
+  const box=document.getElementById("lessonList");
+  box.innerHTML="";
+  let complete=0;
+  a.lessons.forEach((lesson,i)=>{
+    const done=!!state.done[keyFor(currentAcademy,i)];
+    if(done) complete++;
+    const div=document.createElement("div");
+    div.className="lesson";
+    div.innerHTML=`
+      <h4>${i+1}. ${lesson[0]}</h4>
+      <p>${lesson[1]}</p>
+      <button class="btn small ${done?'green':''}" onclick="completeLesson(${i})">${done?'✓ Completed':'Complete Lesson'}</button>
+      <button class="btn small secondary" onclick="knowledgeCheck(${i})">Knowledge Check</button>
+      <div class="status hidden" id="lessonStatus${i}"></div>`;
+    box.appendChild(div);
+  });
+  document.getElementById("academyProgressText").textContent=complete+" / "+a.lessons.length+" complete";
+  document.getElementById("academyProgress").style.width=(complete/a.lessons.length*100)+"%";
+}
+
+function completeLesson(i){
+  const k=keyFor(currentAcademy,i);
+  if(!state.done[k]){
+    state.done[k]=true;
+    state.points+=25;
+    saveState();
+  }
+  renderLessons();
+}
+
+function knowledgeCheck(i){
+  const status=document.getElementById("lessonStatus"+i);
+  status.classList.remove("hidden");
+  const questions=[
+    "Knowledge check opened. Review the lesson, then mark it complete when you are confident with the material.",
+    "Use the safest diagnostic step first. Measure and verify before replacing parts.",
+    "Think through the system in order: symptom → basic checks → measurements → diagnosis."
+  ];
+  status.textContent=questions[i] || questions[0];
+}
+
+function serviceAnswer(correct){
+  const s=document.getElementById("serviceStatus");
+  if(correct){
+    s.textContent="Correct. Check the filter and airflow before jumping to major component replacement or refrigerant charging.";
+    if(!state.done["service1"]){ state.done["service1"]=true; state.points+=20; saveState(); }
+  }else{
+    s.textContent="Not the best first step. Start with simple airflow and operating-condition checks before replacing parts or adding refrigerant.";
+  }
+}
+
+function updateRecord(){
+  const doneCount=Object.keys(state.done).filter(k=>k.includes("_") && state.done[k]).length;
+  const total=9;
+  document.getElementById("recordText").textContent=state.points+" TradePoints • "+doneCount+" lessons complete";
+  document.getElementById("overallProgress").style.width=Math.min(100,doneCount/total*100)+"%";
+}
+updateRecord();
+</script>
+</body>
+</html>
