@@ -155,7 +155,7 @@ textarea.field{min-height:130px;resize:vertical}.policylinks{display:flex;justif
 <div class="buttonstack"><button class="btn block" onclick="createAccount()">Create account</button><button class="btn secondary block" onclick="signInAccount()">Sign in</button><button class="btn secondary block" onclick="sendPasswordReset()">Email me a password-reset link</button></div>
 <p class="muted" style="font-size:13px">Account emails and access status are handled securely by Supabase. Career progress remains in this browser during this stage of development. Never share your password with Skilled Pathways.</p>
 </div>
-<div id="signedInPane" class="hidden"><div class="success"><b>Signed in</b><br><span id="authAccountEmail"></span></div><div class="card"><b>Full Guide access</b><p class="muted" id="authAccessStatus">Checking access…</p></div><div class="buttonstack"><button class="btn block" onclick="closeAccount();showDashboard()">View my progress</button><button class="btn secondary block" onclick="signOutAccount()">Sign out</button></div></div>
+<div id="signedInPane" class="hidden"><div class="success"><b>Signed in</b><br><span id="authAccountEmail"></span></div><div class="card"><b>Full Guide access</b><p class="muted" id="authAccessStatus">Checking access…</p></div><div class="buttonstack"><button class="btn block" onclick="closeAccount();showDashboard()">View my progress</button><button class="btn secondary block" onclick="startPasswordChange()">Change password</button><button class="btn secondary block" onclick="signOutAccount()">Sign out</button></div></div>
 <div id="recoveryPane" class="hidden"><p>Enter a new password for your Skilled Pathways account.</p><label for="newPasswordInput">New password</label><input class="field" id="newPasswordInput" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters"><button class="btn block" onclick="updatePassword()">Update password</button></div>
 <button class="btn secondary block" style="margin-top:9px" onclick="closeAccount()">Close</button></div></div>
 
@@ -166,6 +166,8 @@ textarea.field{min-height:130px;resize:vertical}.policylinks{display:flex;justif
 const SUPABASE_URL="https://ynpjyokykxkfjyjajjwe.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY="sb_publishable_sa6t53ahk8LcCPJkRlYCig_makC-rk7";
 const SITE_URL="https://ronjr813.github.io/TradeWorks-Academy/";
+// Capture recovery intent before Supabase processes and removes the email-link URL tokens.
+const recoveryLinkOpened = new URLSearchParams(window.location.hash.slice(1)).get("type") === "recovery" || new URLSearchParams(window.location.search).get("type") === "recovery";
 const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
 let authUser=null,verifiedAccess=false,recoveryMode=false;
 const trades={
@@ -251,15 +253,37 @@ function clearAccountMessage(){accountMessage.textContent="";accountMessage.clas
 function renderAccountModal(){signedOutPane.classList.toggle("hidden",!!authUser||recoveryMode);signedInPane.classList.toggle("hidden",!authUser||recoveryMode);recoveryPane.classList.toggle("hidden",!recoveryMode);accountTitle.textContent=recoveryMode?"Choose a new password":(authUser?"Your customer account":"Create or sign in");if(authUser){authAccountEmail.textContent=authUser.email||"";authAccessStatus.textContent=verifiedAccess?"Your Full Guide access is active.":"Free account — Full Guide access has not been purchased."}}
 function showAccount(){if(!authUser){nameInput.value=state.name||"";emailInput.value=state.email||"";passwordInput.value=""}clearAccountMessage();renderAccountModal();accountModal.classList.add("show")}
 function closeAccount(){accountModal.classList.remove("show")}
+function startPasswordChange(){if(!authUser)return;recoveryMode=true;newPasswordInput.value="";clearAccountMessage();renderAccountModal();accountModal.classList.add("show")}
 function validateAccountForm(requireName=false){let email=emailInput.value.trim(),password=passwordInput.value;if(requireName&&!nameInput.value.trim())throw new Error("Please enter your name.");if(!email||!emailInput.checkValidity())throw new Error("Please enter a valid email address.");if(password.length<8)throw new Error("Please use a password with at least 8 characters.");if(requireName&&!ageConfirm.checked)throw new Error("Please confirm that you are at least 16 years old.");return{email,password,name:nameInput.value.trim()}}
 async function createAccount(){try{clearAccountMessage();let form=validateAccountForm(true);state.name=form.name;state.email=form.email;save();let{data,error}=await supabaseClient.auth.signUp({email:form.email,password:form.password,options:{emailRedirectTo:SITE_URL,data:{display_name:form.name}}});if(error)throw error;if(data.session){authUser=data.user;await refreshAccess();renderAccountModal();setAccountMessage("Your account is ready and you are signed in.")}else setAccountMessage("Check your email and tap the confirmation link. Then return here and sign in.")}catch(error){setAccountMessage(error.message||"We could not create the account.","error")}}
 async function signInAccount(){try{clearAccountMessage();let form=validateAccountForm(false);let{data,error}=await supabaseClient.auth.signInWithPassword({email:form.email,password:form.password});if(error)throw error;authUser=data.user;state.email=data.user.email||form.email;save();await refreshAccess();renderAccountModal();setAccountMessage("Signed in successfully.")}catch(error){setAccountMessage(error.message||"We could not sign you in.","error")}}
 async function signOutAccount(){try{let{error}=await supabaseClient.auth.signOut();if(error)throw error;authUser=null;verifiedAccess=false;syncAccount();renderAccountModal();setAccountMessage("You are signed out.")}catch(error){setAccountMessage(error.message||"We could not sign you out.","error")}}
 async function sendPasswordReset(){try{clearAccountMessage();let email=emailInput.value.trim();if(!email||!emailInput.checkValidity())throw new Error("Enter your account email first.");let{error}=await supabaseClient.auth.resetPasswordForEmail(email,{redirectTo:SITE_URL});if(error)throw error;setAccountMessage("Check your email for the password-reset link.")}catch(error){setAccountMessage(error.message||"We could not send the reset email.","error")}}
-async function updatePassword(){try{clearAccountMessage();let password=newPasswordInput.value;if(password.length<8)throw new Error("Please use at least 8 characters.");let{error}=await supabaseClient.auth.updateUser({password});if(error)throw error;recoveryMode=false;renderAccountModal();setAccountMessage("Your password has been updated.")}catch(error){setAccountMessage(error.message||"We could not update the password.","error")}}
+async function updatePassword(){try{clearAccountMessage();let password=newPasswordInput.value;if(password.length<8)throw new Error("Please use at least 8 characters.");let{error}=await supabaseClient.auth.updateUser({password});if(error)throw error;newPasswordInput.value="";recoveryMode=false;renderAccountModal();setAccountMessage("Your password has been updated. You can now sign in with your new password.")}catch(error){setAccountMessage(error.message||"We could not update the password.","error")}}
 async function refreshAccess(){verifiedAccess=false;if(!authUser){syncAccount();return}let{data,error}=await supabaseClient.from("profiles").select("full_access").eq("id",authUser.id).maybeSingle();if(!error&&data)verifiedAccess=!!data.full_access;syncAccount();if(current)renderPaid();renderAccountModal()}
 async function applyAuthSession(session){authUser=session?.user||null;if(authUser){state.email=authUser.email||state.email;let displayName=authUser.user_metadata?.display_name;if(displayName)state.name=displayName}await refreshAccess();save()}
-async function initAuth(){try{let{data}=await supabaseClient.auth.getSession();await applyAuthSession(data.session);supabaseClient.auth.onAuthStateChange((event,session)=>{if(event==="PASSWORD_RECOVERY"){recoveryMode=true;accountModal.classList.add("show")}setTimeout(()=>applyAuthSession(session),0)})}catch(error){console.error("Account initialization failed",error);syncAccount()}}
+async function initAuth(){try{
+// Listen before getSession: otherwise an email-link recovery event can be missed.
+supabaseClient.auth.onAuthStateChange((event,session)=>{
+if(event==="PASSWORD_RECOVERY"){
+recoveryMode=true;
+newPasswordInput.value="";
+renderAccountModal();
+accountModal.classList.add("show");
+}
+// Defer Supabase requests until outside its auth-state callback.
+setTimeout(()=>applyAuthSession(session).catch(console.error),0);
+});
+let{data,error}=await supabaseClient.auth.getSession();
+if(error)throw error;
+await applyAuthSession(data.session);
+// Handle links opened by email clients even if the SDK already emitted the event.
+if(recoveryLinkOpened&&data.session){
+recoveryMode=true;
+renderAccountModal();
+accountModal.classList.add("show");
+}
+}catch(error){console.error("Account initialization failed",error);syncAccount()}}
 function showDashboard(){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));dashboardScreen.classList.add("active");dashAvatar.textContent=initials();dashName.textContent=accountName();dashEmail.textContent=accountEmail()||"No account email";dashPass.textContent=verifiedAccess?"FULL GUIDE":"FREE EXPLORER";dashPass.className="badge "+(verifiedAccess?"paid":"");let ex=Object.keys(state.explored).length;exploredCount.textContent=ex;pointsCount.textContent=state.points;dashProgress.innerHTML=Object.entries(trades).map(([k,t])=>{let done=[0,1,2,3,4].filter(i=>state.completed[k+'lesson'+i]).length,scenarioDone=!!state.completed[k+'scenario'],pct=Math.round((done+(scenarioDone?1:0))/6*100);return `<div class="module"><div class="module-top"><div><b>${t.icon} ${t.name}</b><br><span class="muted">${done}/5 lessons • ${scenarioDone?'Scenario complete':'Scenario pending'}</span></div><span class="badge ${pct===100?'paid':''}">${pct}%</span></div><div class="progress"><span style="width:${pct}%"></span></div></div>`}).join("");scrollTo(0,0)}
 function openAssessment(){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));assessmentScreen.classList.add("active");renderAssessment();scrollTo(0,0)}
 function renderAssessment(){assessmentQs.innerHTML=assessment.map((q,i)=>`<div class="q"><b>${i+1}. ${q[0]}</b>${q[1].map((a,j)=>`<button class="answer ${assessAnswers[i]===j?"good":""}" onclick="pick(${i},${j})">${a}</button>`).join("")}</div>`).join("")}
